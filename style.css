@@ -524,3 +524,190 @@ body.fade-out {
     align-items: center;
   }
 }
+
+/* ==== HERO SECTION ==== */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 120px 80px;
+  gap: 60px;
+}
+
+.hero-content {
+  max-width: 480px;
+}
+
+.hero-content h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #1b3b2f;
+  line-height: 1.2;
+}
+
+.hero-content .italic {
+  font-style: italic;
+  color: #ffb400;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  margin-top: 24px;
+  color: #333;
+  line-height: 1.6;
+}
+
+.hero-images {
+  position: relative;
+  width: 580px;
+  height: 430px;
+  overflow: visible;
+}
+
+.img-card {
+  position: absolute;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.img-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card1 {
+  top: 0;
+  left: 30px;
+  width: 330px;
+  height: 200px;
+  z-index: 3;
+}
+
+.card2 {
+  top: 60px;
+  left: 180px;
+  width: 340px;
+  height: 210px;
+  z-index: 2;
+}
+
+.card3 {
+  top: 190px;
+  left: 70px;
+  width: 340px;
+  height: 210px;
+  z-index: 1;
+}
+
+.img-card:hover {
+  transform: scale(1.04);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+  z-index: 5;
+}
+
+/* ==== UPCOMING EVENT ==== */
+.upcoming {
+  text-align: center;
+  padding: 100px 40px;
+  background-color: #fffdf5;
+}
+
+.upcoming h2 {
+  font-size: 2rem;
+  color: #204830;
+  margin-bottom: 40px;
+}
+
+.event-cards {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.event-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 300px;
+  padding: 20px;
+  text-align: left;
+}
+
+.event-card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.event-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.btn {
+  background-color: #ffb400;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn-outline {
+  border: 2px solid #ffb400;
+  padding: 6px 10px;
+  border-radius: 8px;
+  color: #ffb400;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ==== COMPARISON SECTION ==== */
+.comparison {
+  background: #fff;
+  padding: 100px 40px;
+  text-align: center;
+}
+
+.comparison h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #1b3b2f;
+}
+
+.compare-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.compare-item {
+  background: #fffdf5;
+  border-radius: 16px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.compare-item img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.vs span {
+  background: #ffb400;
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+}
