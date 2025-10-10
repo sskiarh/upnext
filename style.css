@@ -928,3 +928,40 @@ body.fade-out {
   font-weight: 600;
   text-decoration: none;
 }
+
+/* ==== LOGIN PAGE ==== */
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: #1c1c1c;
+}
+
+.remember input {
+  margin-right: 4px;
+}
+
+.forgot {
+  text-decoration: none;
+  color: #1c1c1c;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.forgot:hover {
+  color: #FFBC00;
+}
+
+/* animasi kedip mata pas toggle */
+.input-group i.fa-eye,
+.input-group i.fa-eye-slash {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.input-group i.fa-eye:active,
+.input-group i.fa-eye-slash:active {
+  transform: scale(0.8);
+}
