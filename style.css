@@ -21,16 +21,19 @@ body.fade-out {
 .navbar {
   background-color: #213C29;
   border-radius: 60px;
-  margin: 25px 60px;
   padding: 10px 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  position: sticky;
-  top: 0;
+  position: fixed;
+  top: 20px;         /* biar gak nempel banget di atas */
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 120px); /* ngimbangin margin kiri-kanan */
   z-index: 1000;
 }
+
 
 .navbar-left {
   display: flex;
@@ -229,7 +232,7 @@ body.fade-out {
 
 /* ==== ACARA PAGE ==== */
 .event-page {
-  padding: 100px 80px;
+  padding: 110px 80px;
 }
 
 .search-filter {
@@ -246,7 +249,7 @@ body.fade-out {
   border: 2px solid #ccc;
   border-radius: 40px;
   padding: 8px 18px;
-  width: 1000px;
+  width: 1040px;
   background-color: transparent;
 }
 
@@ -267,6 +270,7 @@ body.fade-out {
 .filter-buttons {
   display: flex;
   gap: 60px;
+  margin-bottom: 10px;
 }
 
 .filter-btn {
@@ -290,29 +294,99 @@ body.fade-out {
   color: white;
 }
 
-/* event cards */
+/* === EVENT LIST === */
 .event-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 25px;
-  margin-top: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 280px));
+  gap: 40px 100px;        /* baris 40px, kolom 100px */
+  margin-top: 5px;       /* jarak dari search/filter ke atas */
+  justify-content: start; /* card mulai dari kiri */
+  padding: 20px 20px;     /* jarak kiri dan kanan container */
 }
 
+/* === EVENT CARD === */
 .event-card {
-  background-color: white;
-  border: 1.5px solid #ddd;
+  background: #fff;
   border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 300px; /* maksimal lebar 1 card */
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-  transition: transform 0.3s;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* jarak antar elemen dalam card */
 }
 
-.event-card:hover {
-  transform: translateY(-5px);
+/* Poster */
+.event-card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 10px;
 }
 
+/* Judul */
+.event-title {
+  font-weight: 700;
+  font-size: 18px;
+  color: #213C29;
+}
 
-/* ==== ABOUT US PERFECT STYLE ==== */
+/* Deskripsi */
+.event-desc {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* Benefit */
+.event-benefit {
+  font-size: 14px;
+  font-weight: 600;
+  color: #213C29; 
+}
+
+/* Tombol */
+.event-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.event-buttons a {
+  flex: 1;
+  text-align: center;
+  padding: 10px 0;
+  border-radius: 25px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+/* tombol utama */
+.event-buttons a.btn {
+  background-color: #FFBC00; /* kuning */
+  color: #FFFDF6;
+}
+
+.event-buttons a.btn:hover {
+  color: #213C29; /* font hijau saat hover */
+}
+
+/* tombol sekunder */
+.event-buttons a.btn-outline {
+  border: 2px solid #FFBC00;
+  color: #FFBC00;
+  background-color: transparent;
+}
+
+.event-buttons a.btn-outline:hover {
+  color: #FFFDF6;
+  background-color: #FFBC00;
+}
+
+/* ==== TENTANG KAMI ==== */
 
 .tentang-kami {
   font-family: 'Poppins', sans-serif;
@@ -530,7 +604,7 @@ body.fade-out {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 120px 80px;
+  padding: 130px 80px;
   gap: 60px;
 }
 
