@@ -1,46 +1,72 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>UPNext</title>
-  <!-- Tambah font Poppins dari Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daftar | UPNext</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
-<body>
-  <div class="container">
-    <div class="form-box">
-      <h1>Daftar untuk Mulai!</h1>
+<body class="register-page">
 
-      <form>
-        <div class="form-group">
-          <label>Nama pengguna</label>
-          <input type="text" placeholder="Masukkan nama pengguna">
+  <div class="register-container">
+    <!-- Logo dan Nama Website -->
+    <div class="register-logo">
+      <img src="assets/logo.png" alt="UPNext Logo">
+      <h2><span class="upn">UP</span><span class="ext">Next</span></h2>
+    </div>
+
+    <!-- Form Registrasi -->
+    <div class="register-box">
+      <h3>Daftar untuk Mulai!</h3>
+      <form onsubmit="return goToMain(event)">
+        <label>Nama pengguna</label>
+        <div class="input-group">
+          <i class="fa-regular fa-user"></i>
+          <input type="text" placeholder="Masukkan nama pengguna" required>
         </div>
 
-        <div class="form-group">
-          <label>Email</label>
-          <input type="email" placeholder="Masukkan email">
+        <label>Email</label>
+        <div class="input-group">
+          <i class="fa-regular fa-envelope"></i>
+          <input type="email" placeholder="Masukkan email" required>
         </div>
 
-        <div class="form-group">
-          <label>Kata sandi</label>
-          <input type="password" placeholder="Masukkan kata sandi">
+        <label>Kata sandi</label>
+        <div class="input-group">
+          <i class="fa-solid fa-lock"></i>
+          <input type="password" placeholder="Masukkan kata sandi" required>
+          <i class="fa-regular fa-eye"></i>
         </div>
 
-        <div class="form-group">
-          <label>Konfirmasi kata sandi</label>
-          <input type="password" placeholder="Masukkan ulang kata sandi">
+        <label>Konfirmasi kata sandi</label>
+        <div class="input-group">
+          <i class="fa-solid fa-lock"></i>
+          <input type="password" placeholder="Masukkan ulang kata sandi" required>
+          <i class="fa-regular fa-eye"></i>
         </div>
 
-        <button type="submit" class="btn-main">Buat akun</button>
-        <button type="button" class="btn-google">Daftar dengan Google</button>
+        <button type="submit" class="btn-daftar">Buat akun</button>
+
+        <button type="button" class="btn-google">
+          <i class="fa-brands fa-google"></i> Daftar dengan Google
+        </button>
+
+        <p class="already">Sudah punya akun? <a href="login.html">Masuk</a></p>
       </form>
-
-      <p class="footer-text">
-        Sudah punya akun? <a href="#">Masuk</a>
-      </p>
     </div>
   </div>
+
+  <script>
+    // Simulasi: kalau klik submit, diarahkan ke halaman utama
+    function goToMain(event) {
+      event.preventDefault();
+      window.location.href = "index.html";
+      return false;
+    }
+  </script>
+
 </body>
 </html>
