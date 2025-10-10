@@ -786,182 +786,182 @@ body.fade-out {
   font-size: 1.2rem;
 }
 
-/* ==== REGISTER PAGE ==== */
-.register-page {
-  background: linear-gradient(135deg, #c0c4a3, #f6e8cc);
-  font-family: 'Poppins', sans-serif;
+/* ==== LOGIN & REGISTER PAGE ==== */
+
+.form-container {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   height: 100vh;
+  background: linear-gradient(135deg, #d6e0d0, #f6e9b0, #e2d7a7);
+  background-size: cover;
+  background-position: center;
+  font-family: 'Poppins', sans-serif;
 }
 
-.register-container {
-  text-align: center;
-  width: 100%;
-  max-width: 420px;
-  padding: 20px;
-}
-
-.register-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 25px;
-}
-
-.register-logo img {
-  width: 40px;
-  height: 40px;
-}
-
-.register-logo h2 {
-  font-weight: 700;
-  font-size: 1.3rem;
-}
-
-.register-logo .upn {
-  color: #FFBC00;
-}
-
-.register-logo .ext {
-  color: #213C29;
-}
-
-/* Kotak Form */
-.register-box {
-  background-color: #FFFDF5;
+/* Kotak putih utama */
+.form-box {
+  background-color: #fffdf5;
+  padding: 50px 60px;
   border-radius: 16px;
-  padding: 40px 35px;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  width: 400px;
 }
 
-.register-box h3 {
+/* Judul utama */
+.form-box h2 {
   margin-bottom: 25px;
-  font-size: 1.2rem;
+  font-weight: 700;
   color: #1b3b2f;
 }
 
-/* Label dan Input */
-.register-box label {
-  display: block;
+/* Grup input */
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
   text-align: left;
-  font-size: 0.9rem;
-  margin: 12px 0 6px;
-  color: #1c1c1c;
 }
 
-.input-group {
-  display: flex;
-  align-items: center;
-  border: 1.5px solid #1b3b2f;
-  border-radius: 10px;
-  padding: 8px 12px;
-  background-color: white;
+.input-group label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #1b3b2f;
+  margin-bottom: 6px;
 }
 
 .input-group i {
-  color: #d4a100;
+  position: absolute;
+  top: 65%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: #c7a600;
   font-size: 1rem;
-  margin-right: 10px;
 }
 
+/* Style input */
 .input-group input {
-  border: none;
-  outline: none;
-  font-size: 0.9rem;
   width: 100%;
-  background: transparent;
-  color: #1c1c1c;
+  padding: 10px 35px 10px 35px; /* biar ada ruang untuk ikon */
+  font-size: 0.9rem;
+  border: 2px solid #213C29;
+  border-radius: 8px;
+  outline: none;
+  background-color: transparent;
+  text-overflow: ellipsis;
 }
 
-/* Tombol utama */
-.btn-daftar {
-  width: 100%;
-  background-color: #213C29;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 0;
-  margin-top: 25px;
+.input-group input::placeholder {
+  font-size: 0.9rem;
+  color: #aaa;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Icon mata (toggle password) */
+.toggle-password {
+  position: absolute;
+  top: 65%;
+  right: 12px;
+  transform: translateY(-50%);
+  color: #c7a600;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: opacity 0.2s;
+}
+
+.toggle-password.active {
+  opacity: 0.5; /* efek “kedip” saat diklik */
+}
+
+/* Checkbox dan link kecil di bawah password */
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.options label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.options a {
+  color: #c7a600;
+  text-decoration: none;
   font-weight: 600;
+}
+
+.options a:hover {
+  text-decoration: underline;
+}
+
+/* Tombol utama (Masuk / Buat akun) */
+.form-box button {
+  background-color: #213C29;
+  color: #fffdf5;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  width: 100%;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.btn-daftar:hover {
-  background-color: #1a4d2e;
+.form-box button:hover {
+  background-color: #ffbc00;
+  color: #213C29;
 }
 
 /* Tombol Google */
-.btn-google {
-  width: 100%;
-  border: 1.5px solid #213C29;
-  background: transparent;
-  color: #213C29;
-  border-radius: 8px;
-  padding: 10px 0;
-  margin-top: 12px;
-  font-weight: 600;
-  cursor: pointer;
+.google-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  transition: all 0.3s;
-}
-
-.btn-google:hover {
-  background: #f6f6f6;
-}
-
-/* Teks bawah */
-.already {
-  font-size: 0.9rem;
-  margin-top: 15px;
-  color: #555;
-}
-
-.already a {
-  color: #FFBC00;
+  gap: 8px;
+  border: 2px solid #213C29;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: transparent;
+  color: #213C29;
   font-weight: 600;
-  text-decoration: none;
-}
-
-/* ==== LOGIN PAGE ==== */
-.login-options {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 6px;
-  font-size: 0.85rem;
-  color: #1c1c1c;
-}
-
-.remember input {
-  margin-right: 4px;
-}
-
-.forgot {
-  text-decoration: none;
-  color: #1c1c1c;
-  font-weight: 500;
-  transition: color 0.3s;
-}
-
-.forgot:hover {
-  color: #FFBC00;
-}
-
-/* animasi kedip mata pas toggle */
-.input-group i.fa-eye,
-.input-group i.fa-eye-slash {
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: 15px;
 }
 
-.input-group i.fa-eye:active,
-.input-group i.fa-eye-slash:active {
-  transform: scale(0.8);
+.google-btn:hover {
+  background-color: #213C29;
+  color: #fffdf5;
+}
+
+.google-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Teks bawah form */
+.form-footer {
+  margin-top: 15px;
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.form-footer a {
+  color: #c7a600;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.form-footer a:hover {
+  text-decoration: underline;
 }
