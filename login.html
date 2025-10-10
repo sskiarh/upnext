@@ -9,68 +9,58 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
-<body class="register-page">
+<body class="auth-page">
 
-  <div class="register-container">
-    <!-- Logo dan Nama Website -->
-    <div class="register-logo">
-      <img src="assets/logo.png" alt="UPNext Logo">
-      <h2><span class="upn">UP</span><span class="ext">Next</span></h2>
-    </div>
+  <div class="auth-logo">
+    <img src="assets/logo.png" alt="UPNext Logo" />
+    <h2><span class="up">UP</span><span class="next">Next</span></h2>
+  </div>
 
-    <!-- Kotak Login -->
-    <div class="register-box">
-      <h3>Selamat Datang Kembali!</h3>
+  <div class="auth-box">
+    <h3>Selamat Datang Kembali!</h3>
 
-      <form onsubmit="return loginGo(event)">
-        <label>Nama pengguna</label>
-        <div class="input-group">
-          <i class="fa-regular fa-user"></i>
-          <input type="text" placeholder="Masukkan email atau nama pengguna Anda" required>
-        </div>
+    <form onsubmit="return goToHome(event)">
+      <label>Nama pengguna</label>
+      <div class="input-group">
+        <i class="fa-regular fa-user"></i>
+        <input type="text" placeholder="Masukkan email atau nama pengguna Anda" required>
+      </div>
 
-        <label>Kata sandi</label>
-        <div class="input-group">
-          <i class="fa-solid fa-lock"></i>
-          <input type="password" id="password" placeholder="Masukkan kata sandi" required>
-          <i class="fa-regular fa-eye" id="togglePassword"></i>
-        </div>
+      <label>Kata sandi</label>
+      <div class="input-group">
+        <i class="fa-solid fa-lock"></i>
+        <input type="password" id="password" placeholder="Masukkan kata sandi" required>
+        <i class="fa-regular fa-eye" id="togglePassword"></i>
+      </div>
 
-        <div class="login-options">
-          <label class="remember">
-            <input type="checkbox"> Ingat saya
-          </label>
-          <a href="#" class="forgot">Lupa kata sandi?</a>
-        </div>
+      <div class="login-options">
+        <label><input type="checkbox"> Ingat saya</label>
+        <a href="#" class="forgot">Lupa kata sandi?</a>
+      </div>
 
-        <button type="submit" class="btn-daftar">Masuk</button>
+      <button type="submit" class="btn-main">Masuk</button>
 
-        <button type="button" class="btn-google">
-          <i class="fa-brands fa-google"></i> Masuk dengan Google
-        </button>
+      <button type="button" class="btn-google">
+        <i class="fa-brands fa-google"></i> Masuk dengan Google
+      </button>
 
-        <p class="already">Belum punya akun? <a href="register.html">Buat akun</a></p>
-      </form>
-    </div>
+      <p class="switch">Belum punya akun? <a href="register.html">Buat akun</a></p>
+    </form>
   </div>
 
   <script>
-    // Navigasi ke halaman utama
-    function loginGo(event) {
-      event.preventDefault();
+    function goToHome(e) {
+      e.preventDefault();
       window.location.href = "index.html";
-      return false;
     }
 
-    // Toggle mata untuk password
-    const toggle = document.getElementById('togglePassword');
-    const password = document.getElementById('password');
-    toggle.addEventListener('click', () => {
-      const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-      password.setAttribute('type', type);
+    const toggle = document.getElementById("togglePassword");
+    const password = document.getElementById("password");
 
-      // animasi kedip
-      toggle.classList.toggle('fa-eye-slash');
+    toggle.addEventListener("click", () => {
+      const type = password.getAttribute("type") === "password" ? "text" : "password";
+      password.setAttribute("type", type);
+      toggle.classList.toggle("fa-eye-slash");
     });
   </script>
 
