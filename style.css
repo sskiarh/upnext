@@ -32,8 +32,8 @@ body.fade-out {
   transform: translateX(-50%);
   width: calc(100% - 120px); /* ngimbangin margin kiri-kanan */
   z-index: 1000;
+  position: relative;
 }
-
 
 .navbar-left {
   display: flex;
@@ -93,6 +93,65 @@ body.fade-out {
   background-color: #FFBC00;
   color: #213C29;
 }
+
+/* Hamburger default hidden */
+.hamburger {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: white;
+  position: relative;
+  z-index: 200;
+}
+
+/* Mobile menu */
+@media screen and (max-width: 900px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none; /* default sembunyi */
+    flex-direction: column;
+    position: absolute;
+    top: 80px; /* persis di bawah navbar */
+    right: 10px; /* sedikit dari kanan */
+    background-color: white; /* kotak menu */
+    width: 180px; /* lebar kotak */
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    padding: 2px 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    list-style: none;
+    margin: 0px 0; /* jarak antar menu */
+  }
+
+  .nav-links li a,
+  .nav-links li button {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px 15px;
+    color: #111;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    transition: background 0.3s;
+  }
+
+  .nav-links li a:hover,
+  .nav-links li button:hover {
+    background-color: #eee;
+  }
+}
+
+
 
 /* ==== FOOTER ==== */
 .footer {
@@ -232,7 +291,7 @@ body.fade-out {
 
 /* ==== ACARA PAGE ==== */
 .event-page {
-  padding: 110px 80px;
+  padding: 60px 80px;
 }
 
 .search-filter {
@@ -248,7 +307,7 @@ body.fade-out {
   align-items: center;
   border: 2px solid #ccc;
   border-radius: 40px;
-  padding: 8px 18px;
+  padding: 8px 20px;
   width: 1040px;
   background-color: transparent;
 }
@@ -386,6 +445,128 @@ body.fade-out {
   background-color: #FFBC00;
 }
 
+.event-poster {
+  position: relative;
+}
+
+.poster-container {
+  position: relative;
+}
+
+.bookmark-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.bookmark-btn:hover {
+  transform: scale(1.1);
+}
+
+.bookmark-btn i {
+  color: #ffbc00;
+  font-size: 18px;
+}
+
+.bookmark-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 280px));
+  gap: 40px 100px;  /* jarak antar card (atas-bawah dan kiri-kanan) */
+  justify-content: start; /* mulai dari kiri */
+  padding: 20px 80px; /* jarak dari sisi layar */
+}
+
+.bookmark-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 20px;
+}
+
+.bookmark-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+/* === BOOKMARK PAGE === */
+.bookmark-page {
+  padding: 100px 40px 60px;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+}
+
+.bookmark-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.bookmark-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* mulai dari kiri */
+  gap: 20px;
+  margin: 40px ; /* biar tetap di tengah halaman */
+  max-width: 1200px; /* batas biar gak terlalu lebar */
+  padding:  50px; /* kasih space kanan kiri */
+}
+
+.empty-bookmark {
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 50px;
+  margin: 0px 40px 0px 400px; /* atas kanan bawah kiri */
+}
+
+
+.event-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  padding-bottom: 15px;
+  transition: transform 0.2s;
+}
+
+.event-card:hover {
+  transform: translateY(-3px);
+}
+
+.poster-container img {
+  width: 100%;
+  border-radius: 12px 12px 0 0;
+}
+
+/* Teks jika belum ada bookmark */
+.empty-bookmark {
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+  margin-top: 50px;
+}
+
+
+.empty-bookmark p {
+  font-size: 1.2rem;
+  color: #555;
+  font-weight: 100;
+}
+
+
 /* ==== TENTANG KAMI ==== */
 
 .tentang-kami {
@@ -416,7 +597,7 @@ body.fade-out {
 }
 
 .hero-text h1 span {
-  color: #ffb703;
+  color: #ffbc00;
 }
 
 .hero-text p {
@@ -468,7 +649,7 @@ body.fade-out {
   padding: 2rem;
   box-shadow: 0 5px 20px rgba(0, 64, 40, 0.1);
   text-align: center;
-  border-top: 6px solid #ffb703;
+  border-top: 6px solid #ffbc00;
   transition: all 0.3s ease;
 }
 
@@ -512,7 +693,7 @@ body.fade-out {
   content: "✓";
   position: absolute;
   left: 0;
-  color: #ffb703;
+  color: #ffbc00;
   font-weight: bold;
 }
 
@@ -530,7 +711,7 @@ body.fade-out {
 }
 
 .tim-kami h2 span {
-  color: #ffb703;
+  color: #ffbc00;
 }
 
 .tim-grid {
@@ -604,7 +785,7 @@ body.fade-out {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 130px 80px;
+  padding: 70px 80px;
   gap: 60px;
 }
 
@@ -621,7 +802,7 @@ body.fade-out {
 
 .hero-content .italic {
   font-style: italic;
-  color: #ffb400;
+  color: #ffbc00;
 }
 
 .hero-content p {
@@ -685,62 +866,74 @@ body.fade-out {
 
 /* ==== UPCOMING EVENT ==== */
 .upcoming {
+  padding: 80px 60px;
+  background-color: #f9f9f9;
   text-align: center;
-  padding: 100px 40px;
-  background-color: #fffdf5;
 }
 
 .upcoming h2 {
   font-size: 2rem;
-  color: #204830;
+  font-weight: 700;
   margin-bottom: 40px;
 }
 
-.event-cards {
+.upcoming-list {
   display: flex;
   justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
+  gap: 30px;
+  flex-wrap: wrap; /* biar responsif di HP */
 }
 
-.event-card {
+.upcoming-card {
   background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  width: 300px;
-  padding: 20px;
-  text-align: left;
-}
-
-.event-card img {
-  width: 100%;
   border-radius: 12px;
-  margin-bottom: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  width: 300px;
+  text-align: left;
+  transition: transform 0.2s;
 }
 
-.event-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
+.upcoming-card:hover {
+  transform: translateY(-5px);
 }
 
-.btn {
-  background-color: #ffb400;
-  padding: 8px 12px;
-  border-radius: 8px;
-  color: white;
-  text-decoration: none;
+.upcoming-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.upcoming-card h3 {
+  font-size: 1.1rem;
+  margin: 15px;
   font-weight: 600;
 }
 
-.btn-outline {
-  border: 2px solid #ffb400;
-  padding: 6px 10px;
+.upcoming-card p {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0 15px 15px;
+}
+
+/* Tombol Lihat Semua Event */
+.btn-upcoming {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: 2px solid #ffbc00; /* border kuning */
+  color: #ffbc00;             /* font kuning */
   border-radius: 8px;
-  color: #ffb400;
   text-decoration: none;
   font-weight: 600;
+  transition: all 0.3s ease;
 }
+
+.btn-upcoming:hover {
+  background-color: #ffbc00;  /* background kuning */
+  color: #fff;                /* font putih */
+}
+
 
 /* ==== COMPARISON SECTION ==== */
 .comparison {
@@ -778,7 +971,7 @@ body.fade-out {
 }
 
 .vs span {
-  background: #ffb400;
+  background: #ffbc00;
   color: white;
   font-weight: bold;
   padding: 10px 20px;
@@ -860,18 +1053,9 @@ body.auth-page {
   margin-bottom: 18px;
 }
 
-.input-group i {
-  position: absolute;
-  top: 50%;
-  left: 12px;
-  transform: translateY(-50%);
-  color: #d4a100;
-  font-size: 1rem;
-}
-
 .input-group input {
   width: 100%;
-  padding: 10px 38px;
+  padding: 10px 38px; /* 10px top/bottom, 38px kanan/kiri */
   border: 1.6px solid #213C29;
   border-radius: 8px;
   outline: none;
@@ -879,11 +1063,32 @@ body.auth-page {
   background: transparent;
 }
 
-/* Placeholder */
-.input-group input::placeholder {
-  color: #aaa;
-  text-overflow: ellipsis;
+/* Icon lock / user di kiri */
+.input-group i:not(#togglePassword) {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: #ffbc00;
+  font-size: 1rem;
 }
+
+/* Icon mata di kanan */
+#togglePassword {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #ffbc00;
+  font-size: 1rem;
+  transition: transform 0.2s;
+}
+
+#togglePassword:active {
+  transform: translateY(-50%) scale(0.8);
+}
+
 
 /* ===== Tombol ===== */
 .btn-main {
@@ -1044,7 +1249,7 @@ body.auth-page {
 }
 
 .sidebar-menu a.logout {
-  background-color: #E54B3D;
+  background-color: #dd473a;
   color: white;
   border-radius: 12px;
   padding: 10px;
