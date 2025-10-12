@@ -122,3 +122,94 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+// === HANDLE FOTO PROFIL & SIDEBAR ===
+document.addEventListener("DOMContentLoaded", () => {
+  const profileImg = document.querySelector(".navbar-profile");
+  const sidebar = document.getElementById("sidebar");
+  const overlay = document.getElementById("overlay");
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  const user = JSON.parse(localStorage.getItem("user"));
+  if (user) {
+    document.getElementById("sidebar-name").textContent = user.name;
+    document.getElementById("sidebar-email").textContent = user.email;
+    document.getElementById("sidebar-photo").src = user.photo;
+  }
+
+  // === klik foto profil -> sidebar muncul ===
+  if (profileImg) {
+    profileImg.addEventListener("click", (e) => {
+      e.preventDefault(); // biar gak langsung pindah halaman
+      sidebar.classList.add("active");
+      overlay.classList.add("active");
+    });
+  }
+
+  // === klik overlay -> sidebar hilang ===
+  overlay.addEventListener("click", () => {
+    sidebar.classList.remove("active");
+    overlay.classList.remove("active");
+  });
+
+  // === klik logout -> hapus user & balik ke index ===
+  logoutBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    localStorage.removeItem("user");
+    window.location.href = "index.html";
+  });
+
+  // === klik "Profil Saya" di sidebar -> buka profile.html ===
+  const profileLink = document.querySelector('.sidebar-menu a[href="profile.html"]');
+  if (profileLink) {
+    profileLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      sidebar.classList.remove("active");
+      overlay.classList.remove("active");
+      setTimeout(() => {
+        window.location.href = "profile.html";
+      }, 200);
+    });
+  }
+});
+
+// === GANTI TOMBOL MASUK JADI FOTO PROFIL ===
+document.addEventListener("DOMContentLoaded", () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const masukBtn = document.querySelector(".btn-masuk");
+  const navbar = document.querySelector(".navbar");
+
+  if (user && masukBtn) {
+    masukBtn.remove();
+
+    const profileImg = document.createElement("img");
+    profileImg.src = user.photo;
+    profileImg.alt = "Profile";
+    profileImg.classList.add("navbar-profile");
+    navbar.appendChild(profileImg);
+
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    document.getElementById("sidebar-name").textContent = user.name;
+    document.getElementById("sidebar-email").textContent = user.email;
+    document.getElementById("sidebar-photo").src = user.photo;
+
+    profileImg.addEventListener("click", (e) => {
+      e.preventDefault();
+      sidebar.classList.add("active");
+      overlay.classList.add("active");
+    });
+
+    overlay.addEventListener("click", () => {
+      sidebar.classList.remove("active");
+      overlay.classList.remove("active");
+    });
+
+    logoutBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      localStorage.removeItem("user");
+      window.location.href = "index.html";
+    });
+  }
+});

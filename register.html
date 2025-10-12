@@ -19,17 +19,17 @@
   <div class="auth-box">
     <h3>Daftar untuk Mulai!</h3>
 
-    <form onsubmit="return goToHome(event)">
+    <form onsubmit="goToHome(event)">
       <label>Nama pengguna</label>
       <div class="input-group">
         <i class="fa-regular fa-user"></i>
-        <input type="text" placeholder="Masukkan nama pengguna" required>
+        <input type="text" id="name" placeholder="Masukkan nama pengguna" required>
       </div>
 
       <label>Email</label>
       <div class="input-group">
         <i class="fa-regular fa-envelope"></i>
-        <input type="email" placeholder="Masukkan email" required>
+        <input type="email" id="email" placeholder="Masukkan email" required>
       </div>
 
       <label>Kata sandi</label>
@@ -46,27 +46,32 @@
       </div>
 
       <button type="submit" class="btn-main">Buat akun</button>
-
-      <button type="button" class="btn-google">
-        <i class="fa-brands fa-google"></i> Daftar dengan Google
-      </button>
-
       <p class="switch">Sudah punya akun? <a href="login.html">Masuk</a></p>
     </form>
   </div>
 
   <script>
+    // Simpan user ke localStorage dan redirect ke index.html
     function goToHome(e) {
       e.preventDefault();
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+
+      const user = {
+        name: name,
+        email: email,
+        photo: "assets/Frame 79.png"
+      };
+      localStorage.setItem("user", JSON.stringify(user));
       window.location.href = "index.html";
     }
 
+    // Toggle mata password
     const toggle = document.getElementById("togglePassword");
     const password = document.getElementById("password");
-
     toggle.addEventListener("click", () => {
-      const type = password.getAttribute("type") === "password" ? "text" : "password";
-      password.setAttribute("type", type);
+      const type = password.type === "password" ? "text" : "password";
+      password.type = type;
       toggle.classList.toggle("fa-eye-slash");
     });
   </script>

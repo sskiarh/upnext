@@ -19,11 +19,11 @@
   <div class="auth-box">
     <h3>Selamat Datang Kembali!</h3>
 
-    <form onsubmit="return goToHome(event)">
+    <form onsubmit="goToHome(event)">
       <label>Nama pengguna</label>
       <div class="input-group">
         <i class="fa-regular fa-user"></i>
-        <input type="text" placeholder="Masukkan email atau nama pengguna Anda" required>
+        <input type="text" id="name" placeholder="Masukkan nama pengguna" required>
       </div>
 
       <label>Kata sandi</label>
@@ -39,11 +39,6 @@
       </div>
 
       <button type="submit" class="btn-main">Masuk</button>
-
-      <button type="button" class="btn-google">
-        <i class="fa-brands fa-google"></i> Masuk dengan Google
-      </button>
-
       <p class="switch">Belum punya akun? <a href="register.html">Buat akun</a></p>
     </form>
   </div>
@@ -51,15 +46,22 @@
   <script>
     function goToHome(e) {
       e.preventDefault();
+      const name = document.getElementById("name").value;
+      const user = {
+        name: name,
+        email: `${name}@upnvj.ac.id`,
+        photo: "assets/Frame 79.png"
+      };
+      localStorage.setItem("user", JSON.stringify(user));
       window.location.href = "index.html";
     }
 
+    // Toggle mata password
     const toggle = document.getElementById("togglePassword");
     const password = document.getElementById("password");
-
     toggle.addEventListener("click", () => {
-      const type = password.getAttribute("type") === "password" ? "text" : "password";
-      password.setAttribute("type", type);
+      const type = password.type === "password" ? "text" : "password";
+      password.type = type;
       toggle.classList.toggle("fa-eye-slash");
     });
   </script>

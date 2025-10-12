@@ -29,6 +29,27 @@
 
      <button class="btn-masuk" onclick="window.location.href='login.html'">Masuk</button>
   </nav>
+<!-- ==== SIDEBAR PROFIL ==== -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <img src="assets/foto profile.png" alt="Foto Profil" id="sidebar-photo">
+    <h3 id="sidebar-name">Nama pengguna</h3>
+    <p id="sidebar-email">Email pengguna</p>
+  </div>
+
+  <div class="sidebar-menu">
+    <a href="profile.html"><i class="fa-regular fa-user"></i> Profil Saya</a>
+    <a href="#"><i class="fa-regular fa-bookmark"></i> Markah</a>
+    <a href="#"><i class="fa-solid fa-gear"></i> Pengaturan</a>
+    <a href="#" class="logout" id="logoutBtn">
+      <i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar
+    </a>
+  </div>
+</div>
+
+<!-- Overlay (latar gelap waktu sidebar buka) -->
+<div class="overlay" id="overlay"></div>
+
 
 <!-- ==== HERO SECTION ==== -->
 <section class="hero">
