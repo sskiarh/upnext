@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="assets/logo.png" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
 
@@ -21,14 +21,39 @@
       </h1>
     </div>
 
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
       <li><a href="index.html">Beranda</a></li>
       <li><a href="acara.html">Acara</a></li>
       <li><a href="tentangkami.html">Tentang Kami</a></li>
+      <li><button class="btn-masuk" onclick="window.location.href='login.html'">Masuk</button></li>
     </ul>
 
-     <button class="btn-masuk" onclick="window.location.href='login.html'">Masuk</button>
+    <!-- Hamburger -->
+  <div class="hamburger" id="hamburger">
+    <i class="fa-solid fa-bars"></i>
+  </div>
   </nav>
+
+<!-- ==== SIDEBAR PROFIL ==== -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <img src="assets/foto profile.png" alt="Foto Profil" id="sidebar-photo">
+    <h3 id="sidebar-name">Nama pengguna</h3>
+    <p id="sidebar-email">Email pengguna</p>
+  </div>
+
+  <div class="sidebar-menu">
+    <a href="profile.html"><i class="fa-regular fa-user"></i> Profil Saya</a>
+    <a href="bookmark.html"><i class="fa-regular fa-bookmark"></i> Bookmark Saya</a>
+    <a href="#"><i class="fa-solid fa-gear"></i> Pengaturan</a>
+    <a href="#" class="logout" id="logoutBtn">
+      <i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar
+    </a>
+  </div>
+</div>
+
+<!-- Overlay (latar gelap waktu sidebar buka) -->
+<div class="overlay" id="overlay"></div>
 
   <!-- ==== CONTENT DUMMY ==== -->
   <main class="event-page">
@@ -43,7 +68,7 @@
       <button class="filter-btn" data-category="seminar">Seminar</button>
       <button class="filter-btn" data-category="workshop">Workshop</button>
       <button class="filter-btn" data-category="lomba">Lomba</button>
-      <button class="filter-btn" data-category="ukm">UKM</button>
+      <button class="filter-btn" data-category="sosial">Sosial</button>
     </div>
   </div>
 

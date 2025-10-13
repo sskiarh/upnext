@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Profil Saya | UPNext</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fffdf5;
+      margin: 0;
+      padding: 0;
+      overflow-y: auto;
+    }
+
+    .profile-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 130px 20px 100px;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .profile-header img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    .profile-header h2 {
+      color: #213C29;
+      font-weight: 600;
+      font-size: 1.3rem;
+      margin-bottom: 5px;
+    }
+
+    .profile-header p {
+      color: #777;
+      margin-bottom: 35px;
+      font-size: 0.95rem;
+    }
+
+    .profile-box {
+      background-color: #fff;
+      width: 100%;
+      max-width: 600px;
+      padding: 40px 45px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .profile-box label {
+      font-weight: 500;
+      color: #333;
+      font-size: 0.95rem;
+    }
+
+    .profile-box input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #183D2A;
+      border-radius: 8px;
+      outline: none;
+      font-size: 0.95rem;
+    }
+
+    .profile-box input:focus {
+      border-color: #B18E00;
+      box-shadow: 0 0 4px rgba(177, 142, 0, 0.5);
+    }
+
+    .btn-main {
+      background-color: #B18E00;
+      border: none;
+      color: white;
+      font-weight: 600;
+      padding: 12px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: 0.2s;
+    }
+
+    .btn-main:hover {
+      background-color: #8e7300;
+    }
+
+    /* biar bisa scroll rapi di layar kecil */
+    @media (max-height: 800px) {
+      .profile-container {
+        padding-bottom: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==== NAVBAR ==== -->
+  <nav class="navbar">
+    <div class="navbar-left">
+      <img src="assets/logo.png" alt="UPNext Logo" class="logo" />
+      <h1 class="brand">
+        <span class="upn">UPN</span><span class="ext">ext</span>
+      </h1>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="acara.html">Acara</a></li>
+      <li><a href="tentangkami.html">Tentang Kami</a></li>
+    </ul>
+
+    <img src="assets/foto profile.png" alt="Foto Profil" class="navbar-profile" id="navProfile">
+  </nav>
+
+  <!-- ==== PROFILE SECTION ==== -->
+  <section class="profile-container">
+    <div class="profile-header">
+      <img id="user-photo" src="assets/Frame 79.png" alt="Foto Profil">
+      <h2 id="user-name">Nama pengguna</h2>
+      <p id="user-email">Email pengguna</p>
+    </div>
+
+    <div class="profile-box">
+      <form id="profileForm">
+        <label>Nama Lengkap</label>
+        <input type="text" id="fullname" placeholder="Nama Lengkap" required>
+
+        <label>Nama pengguna</label>
+        <input type="text" id="username" placeholder="Nama pengguna" required>
+
+        <label>Email</label>
+        <input type="email" id="email" placeholder="Email" required>
+
+        <label>Nomor Telepon</label>
+        <input type="text" id="phone" placeholder="Nomor Telepon">
+
+        <label>Kata Sandi</label>
+        <input type="password" id="password" placeholder="Kata Sandi">
+
+        <button type="submit" class="btn-main">Simpan Perubahan</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ==== FOOTER ==== -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/logo.png" alt="UPNext Logo">
+          <h2><span class="upn">UPN</span><span class="ext">ext</span></h2>
+        </div>
+        <p class="footer-desc">
+          UPNext adalah platform informasi kegiatan kampus Universitas Pembangunan Nasional “Veteran” Jakarta (UPNVJ)
+          yang memudahkan mahasiswa untuk menemukan, mengikuti, dan memantau berbagai event seperti seminar, workshop, dan lomba.
+        </p>
+        <div class="footer-email">
+          <i class="fa-solid fa-envelope icon-email"></i>
+          <span>upnext.id@gmail.com</span>
+        </div>
+      </div>
+
+      <div class="footer-menu">
+        <h3>Menu</h3>
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="acara.html">Acara</a></li>
+          <li><a href="tentangkami.html">Tentang Kami</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-socials">
+        <h3>Socials</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#"><i class="fa-brands fa-github"></i></a>
+          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 UPNext | Developed by Cihuy Team</p>
+    </div>
+  </footer>
+
+  <script>
+    // === LOAD DATA USER DARI LOCALSTORAGE ===
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      document.getElementById("user-name").textContent = user.name || "Nama pengguna";
+      document.getElementById("user-email").textContent = user.email || "Email pengguna";
+      document.getElementById("user-photo").src = user.photo || "assets/Frame 79.png";
+      document.getElementById("fullname").value = user.fullname || "";
+      document.getElementById("username").value = user.name || "";
+      document.getElementById("email").value = user.email || "";
+      document.getElementById("phone").value = user.phone || "";
+      document.getElementById("password").value = user.password || "";
+    }
+
+    // === SIMPAN PERUBAHAN ===
+    document.getElementById("profileForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const updatedUser = {
+        ...user,
+        fullname: document.getElementById("fullname").value,
+        name: document.getElementById("username").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        password: document.getElementById("password").value,
+        photo: user?.photo || "assets/Frame 79.png"
+      };
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+      alert("Profil berhasil diperbarui!");
+      window.location.reload();
+    });
+  </script>
+
+</body>
+</html>
