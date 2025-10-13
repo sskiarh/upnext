@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   // ========== NAVBAR ACTIVE + TOMBOL MASUK ==========
   const currentLocation = location.href;
   const menuItems = document.querySelectorAll('.nav-links a');
@@ -9,18 +9,45 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ========== GANTI TOMBOL MASUK JADI FOTO PROFIL ==========
+  // === GANTI TOMBOL MASUK JADI FOTO PROFIL ===
   const user = JSON.parse(localStorage.getItem("user"));
   const masukBtn = document.querySelector(".btn-masuk");
   const navbar = document.querySelector(".navbar");
 
   if (user && masukBtn) {
     masukBtn.remove();
+
     const profileImg = document.createElement("img");
     profileImg.src = user.photo;
     profileImg.alt = "Profile";
     profileImg.classList.add("navbar-profile");
     navbar.appendChild(profileImg);
+
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    document.getElementById("sidebar-name").textContent = user.name;
+    document.getElementById("sidebar-email").textContent = user.email;
+    document.getElementById("sidebar-photo").src = user.photo;
+
+    profileImg.addEventListener("click", (e) => {
+      e.preventDefault();
+      sidebar.classList.add("active");
+      overlay.classList.add("active");
+    });
+
+    overlay.addEventListener("click", () => {
+      sidebar.classList.remove("active");
+      overlay.classList.remove("active");
+    });
+
+    logoutBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      localStorage.removeItem("user");
+      localStorage.removeItem("isLoggedIn");
+      window.location.href = "index.html";
+    });
   }
 
   // ==== DATA EVENT ====

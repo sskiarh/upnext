@@ -1256,7 +1256,7 @@ body.fade-out {
   font-size: 1.2rem;
 }
 
-/* ==== LOGIN & REGISTER PAGE ==== */S
+/* ==== LOGIN & REGISTER PAGE ==== */
 * {
   margin: 0;
   padding: 0;
@@ -1463,6 +1463,7 @@ body.auth-page {
 }
 
 /* ==== SIDEBAR PROFIL ==== */
+
 .sidebar {
   position: fixed;
   top: 0;
@@ -1474,7 +1475,8 @@ body.auth-page {
   border-radius: 12px 0 0 12px;
   padding: 40px 25px;
   transition: right 0.3s ease;
-  z-index: 2000; 
+  z-index: 2000;
+}
 
 .sidebar.active {
   right: 0;
