@@ -321,7 +321,84 @@ body.fade-out {
   padding-top: 100px;
 }
 
+/* ==== ABOUT HERO SECTION (versi event kampus) ==== */
+.about-hero {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #FFF;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  padding-top: 50PX;
+}
+
+/* background gambar kamu */
+.about-hero .hero-bg {
+  background: url('assets/kisahku.jpg') center/cover no-repeat; 
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  filter: brightness(65%) blur(1.5px); /* bikin lembut & gelap dikit */
+}
+
+/* lapisan gelap lembut (shadow halus di atas gambar) */
+.about-hero .hero-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 2;
+}
+
+/* konten utama */
+.about-hero .hero-inner {
+  position: relative;
+  z-index: 3;
+  max-width: 700px;
+  padding: 0 20px;
+  transform: translateY(-20px);
+}
+
+.about-hero .hero-title {
+  font-size: 2.6rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.about-hero .hero-title span {
+  color: #FFF
+}
+
+.about-hero .hero-sub {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: #f2f2f2;
+  line-height: 1.5;
+}
+
+/* biar responsif di HP */
+@media (max-width: 768px) {
+  .about-hero {
+    height: 60vh;
+  }
+
+  .about-hero .hero-title {
+    font-size: 2.5rem;
+  }
+
+}
+
+
 /* HERO SECTION */
+
 .hero-about {
   display: flex;
   align-items: center;
@@ -382,56 +459,59 @@ body.fade-out {
   display: flex;
   justify-content: center;
   align-items: stretch;
-  gap: 2rem;
-  padding: 4rem 8%;
+  gap: 1.5rem;
+  padding: 2.5rem 8%;
   flex-wrap: wrap;
 }
 
 .visi, .misi {
-  flex: 1 1 400px;
+  flex: 1 1 300px;
+  max-width: 360px;
   background: #ffffff;
-  border-radius: 20px;
-  padding: 2rem;
-  box-shadow: 0 5px 20px rgba(0, 64, 40, 0.1);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 64, 40, 0.08);
   text-align: center;
-  border-top: 6px solid #ffb703;
+  border-top: 5px solid #ffb703;
   transition: all 0.3s ease;
 }
 
 .visi:hover, .misi:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 25px rgba(0, 64, 40, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 64, 40, 0.12);
 }
 
 .visi img, .misi img {
-  width: 100%;
-  border-radius: 12px;
-  margin-bottom: 1rem;
+  width: 85%;
+  border-radius: 10px;
+  margin-bottom: 0.8rem;
 }
 
 .visi h2, .misi h2 {
   color: #1a4d2e;
   font-weight: 600;
   font-size: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
 }
 
 .visi p {
   color: #444;
-  font-size: 1.05rem;
+  font-size: 0.85rem;
   line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;  
 }
 
 .misi ul {
   list-style: none;
   text-align: left;
-  padding-left: 1rem;
+  padding-left: 0.8 rem;
 }
 
 .misi li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
   position: relative;
-  padding-left: 1.5rem;
+  padding-left: 1.2rem;
 }
 
 .misi li::before {
@@ -446,13 +526,27 @@ body.fade-out {
 .tim-kami {
   text-align: center;
   padding: 5rem 8%;
-  background: #fdfbf3;
+  background: linear-gradient(to bottom, #fff6e0 0%, #fdfbf3 100%);
 }
 
 .tim-kami h2 {
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 2rem;
+  position: relative;
+  display: inline-block;
+}
+
+.tim-kami h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background-color: #ffb703;
+  border-radius: 2px;
 }
 
 .tim-kami h2 span {
@@ -460,32 +554,37 @@ body.fade-out {
 }
 
 .tim-grid {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  justify-items: center;
 }
+
+
 
 .tim-card {
   background: #ffffff;
-  border-radius: 18px;
-  box-shadow: 0 4px 20px rgba(0, 64, 40, 0.12);
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 240px;
   padding: 1.5rem;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .tim-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-10px);
   box-shadow: 0 8px 30px rgba(0, 64, 40, 0.18);
 }
 
 .tim-card img {
   width: 100%;
-  height: 230px;
+  height: auto;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 20px;
   margin-bottom: 1rem;
+  display: block;
 }
 
 .tim-card h3 {
@@ -498,6 +597,48 @@ body.fade-out {
   color: #555;
   font-size: 0.95rem;
 }
+
+.team-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.team-card:hover .team-overlay {
+  opacity: 1;
+}
+
+.tim-desc {
+  color: #555;
+  font-size: 1.05rem;
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.why-section {
+  text-align: center;
+  padding: 60px 100px;
+  background: #f9faf9;
+  color: #333;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+.why-section h2 {
+  color: #f8b400;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
 
 /* RESPONSIVE DESIGN */
 @media (max-width: 900px) {
