@@ -3,66 +3,72 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UPNext</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <title>UPNext - Bookmark</title>
+
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="icon" type="image/png" href="../assets/logo.png" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <script src="script.js"></script>
+
+  <script src="../script.js" defer></script>
 </head>
 <body>
 
   <!-- ==== NAVBAR ==== -->
   <nav class="navbar">
     <div class="navbar-left">
-      <img src="assets/logo.png" alt="UPNext Logo" class="logo" />
+      <img src="../assets/logo.png" alt="UPNext Logo" class="logo" />
       <h1 class="brand">
         <span class="upn">UPN</span><span class="ext">ext</span>
       </h1>
     </div>
 
-    <ul class="nav-links">
-      <li><a href="index.html">Beranda</a></li>
-      <li><a href="acara.html">Acara</a></li>
-      <li><a href="tentangkami.html">Tentang Kami</a></li>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.php">Beranda</a></li>
+      <li><a href="../acara.php">Acara</a></li>
+      <li><a href="../pages/tentangkami.html">Tentang Kami</a></li>
     </ul>
 
-     <button class="btn-masuk" onclick="window.location.href='login.html'">Masuk</button>
+    <button class="btn-masuk" onclick="window.location.href='login.html'">Masuk</button>
+
+    <!-- Hamburger (mobile) -->
+    <div class="hamburger" id="hamburger">
+      <i class="fa-solid fa-bars"></i>
+    </div>
   </nav>
-<!-- ==== SIDEBAR PROFIL ==== -->
-<div class="sidebar" id="sidebar">
-  <div class="sidebar-header">
-    <img src="assets/foto profile.png" alt="Foto Profil" id="sidebar-photo">
-    <h3 id="sidebar-name">Nama pengguna</h3>
-    <p id="sidebar-email">Email pengguna</p>
+
+  <!-- ==== SIDEBAR PROFIL ==== -->
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <img src="../assets/foto profile.png" alt="Foto Profil" id="sidebar-photo">
+      <h3 id="sidebar-name">Nama pengguna</h3>
+      <p id="sidebar-email">Email pengguna</p>
+    </div>
+
+    <div class="sidebar-menu">
+      <a href="profile.html"><i class="fa-regular fa-user"></i> Profil Saya</a>
+      <a href="bookmark.html"><i class="fa-regular fa-bookmark"></i> Bookmark Saya</a>
+      <a href="../admin/list.php"><i class="fa-solid fa-calendar-days"></i> Kelola Event</a>
+      <a href="#"><i class="fa-solid fa-gear"></i> Pengaturan</a>
+      <a href="#" class="logout" id="logoutBtn">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar
+      </a>
+    </div>
   </div>
 
-  <div class="sidebar-menu">
-    <a href="profile.html"><i class="fa-regular fa-user"></i> Profil Saya</a>
-    <a href="bookmark.html"><i class="fa-regular fa-bookmark"></i> Markah</a>
-    <a href="#"><i class="fa-solid fa-gear"></i> Pengaturan</a>
-    <a href="#" class="logout" id="logoutBtn">
-      <i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar
-    </a>
-  </div>
-</div>
+  <div class="overlay" id="overlay"></div>
 
-<!-- Overlay (latar gelap waktu sidebar buka) -->
-<div class="overlay" id="overlay"></div>
-
- <main class="bookmark-container">
-  <div id="bookmarkList" class="event-list"></div>
-</main>
-
-
-  <script src="script.js"></script>
+  <!-- ==== LIST BOOKMARK ==== -->
+  <main class="bookmark-container">
+    <div id="bookmarkList" class="event-list"></div>
+  </main>
 
   <!-- ==== FOOTER ==== -->
   <footer class="footer">
     <div class="footer-top">
       <div class="footer-brand">
         <div class="footer-logo">
-          <img src="assets/logo.png" alt="UPNext Logo">
+          <img src="../assets/logo.png" alt="UPNext Logo">
           <h2><span class="upn">UPN</span><span class="ext">ext</span></h2>
         </div>
         <p class="footer-desc">
@@ -78,8 +84,8 @@
       <div class="footer-menu">
         <h3>Menu</h3>
         <ul>
-          <li><a href="index.html">Beranda</a></li>
-          <li><a href="acara.html">Acara</a></li>
+          <li><a href="../index.php">Beranda</a></li>
+          <li><a href="../acara.php">Acara</a></li>
           <li><a href="tentangkami.html">Tentang Kami</a></li>
         </ul>
       </div>
@@ -92,8 +98,7 @@
           <a href="https://tiktok.com" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
           <a href="https://github.com" target="_blank"><i class="fa-brands fa-github"></i></a>
           <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-</div>
-
+        </div>
       </div>
     </div>
 
@@ -104,5 +109,3 @@
 
 </body>
 </html>
-
-

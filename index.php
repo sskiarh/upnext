@@ -1,16 +1,39 @@
+<?php
+require 'includes/db_functions.php';
+
+$rows = query("SELECT * FROM events ORDER BY created_at DESC");
+
+$eventsForJs = [];
+foreach ($rows as $row) {
+  $eventsForJs[] = [
+    'title'       => $row['judul'],
+    'category'    => $row['kategori'],
+    'poster'      => $row['poster'],
+    'desc'        => $row['deskripsi'],
+    'benefit'     => $row['benefit'],
+    'registerLink'=> $row['register_link'],
+    'detailLink'  => $row['detail_link'],
+  ];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>UPNext</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" type="image/png" href="assets/logo.png" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <script>
+    window.eventsFromDb = <?= json_encode($eventsForJs); ?>;
+  </script>
   <script src="script.js" defer></script>
 </head>
 <body>
+
 
   <!-- ==== NAVBAR ==== -->
   <nav class="navbar">
@@ -22,10 +45,10 @@
     </div>
 
     <ul class="nav-links" id="navLinks">
-      <li><a href="index.html">Beranda</a></li>
-      <li><a href="acara.html">Acara</a></li>
-      <li><a href="tentangkami.html">Tentang Kami</a></li>
-      <li><button class="btn-masuk" onclick="window.location.href='login.html'">Masuk</button></li>
+      <li><a href="index.php">Beranda</a></li>
+      <li><a href="acara.php">Acara</a></li>
+      <li><a href="pages/tentangkami.html">Tentang Kami</a></li>
+      <li><button class="btn-masuk" onclick="window.location.href='pages/login.html'">Masuk</button></li>
     </ul>
 
     <!-- Hamburger -->
@@ -33,6 +56,7 @@
     <i class="fa-solid fa-bars"></i>
   </div>
   </nav>
+
 <!-- ==== SIDEBAR PROFIL ==== -->
 <div class="sidebar" id="sidebar">
   <div class="sidebar-header">
@@ -42,8 +66,9 @@
   </div>
 
   <div class="sidebar-menu">
-    <a href="profile.html"><i class="fa-regular fa-user"></i> Profil Saya</a>
-    <a href="bookmark.html"><i class="fa-regular fa-bookmark"></i> Bookmark Saya</a>
+    <a href="pages/profile.html"><i class="fa-regular fa-user"></i> Profil Saya</a>
+    <a href="pages/bookmark.html"><i class="fa-regular fa-bookmark"></i> Bookmark Saya</a>
+    <a href="list.php"><i class="fa-solid fa-calendar-days"></i> Kelola Event</a>
     <a href="#"><i class="fa-solid fa-gear"></i> Pengaturan</a>
     <a href="#" class="logout" id="logoutBtn">
       <i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar
@@ -134,9 +159,9 @@ zz
       <div class="footer-menu">
         <h3>Menu</h3>
         <ul>
-          <li><a href="index.html">Beranda</a></li>
-          <li><a href="acara.html">Acara</a></li>
-          <li><a href="tentangkami.html">Tentang Kami</a></li>
+          <li><a href="index.php">Beranda</a></li>
+          <li><a href="acara.php">Acara</a></li>
+          <li><a href="pages/tentangkami.html">Tentang Kami</a></li>
         </ul>
       </div>
 

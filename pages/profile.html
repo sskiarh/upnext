@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Profil Saya | UPNext</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" type="image/png" href="../assets/logo.png" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
@@ -94,7 +94,6 @@
       background-color: #8e7300;
     }
 
-    /* biar bisa scroll rapi di layar kecil */
     @media (max-height: 800px) {
       .profile-container {
         padding-bottom: 200px;
@@ -107,25 +106,25 @@
   <!-- ==== NAVBAR ==== -->
   <nav class="navbar">
     <div class="navbar-left">
-      <img src="assets/logo.png" alt="UPNext Logo" class="logo" />
+      <img src="../assets/logo.png" alt="UPNext Logo" class="logo" />
       <h1 class="brand">
         <span class="upn">UPN</span><span class="ext">ext</span>
       </h1>
     </div>
 
     <ul class="nav-links">
-      <li><a href="index.html">Beranda</a></li>
-      <li><a href="acara.html">Acara</a></li>
+      <li><a href="../index.php">Beranda</a></li>
+      <li><a href="../acara.php">Acara</a></li>
       <li><a href="tentangkami.html">Tentang Kami</a></li>
     </ul>
 
-    <img src="assets/foto profile.png" alt="Foto Profil" class="navbar-profile" id="navProfile">
+    <img src="../assets/foto profile.png" alt="Foto Profil" class="navbar-profile" id="navProfile">
   </nav>
 
   <!-- ==== PROFILE SECTION ==== -->
   <section class="profile-container">
     <div class="profile-header">
-      <img id="user-photo" src="assets/Frame 79.png" alt="Foto Profil">
+      <img id="user-photo" src="../assets/foto profile.png" alt="Foto Profil">
       <h2 id="user-name">Nama pengguna</h2>
       <p id="user-email">Email pengguna</p>
     </div>
@@ -157,7 +156,7 @@
     <div class="footer-top">
       <div class="footer-brand">
         <div class="footer-logo">
-          <img src="assets/logo.png" alt="UPNext Logo">
+          <img src="../assets/logo.png" alt="UPNext Logo">
           <h2><span class="upn">UPN</span><span class="ext">ext</span></h2>
         </div>
         <p class="footer-desc">
@@ -173,8 +172,8 @@
       <div class="footer-menu">
         <h3>Menu</h3>
         <ul>
-          <li><a href="index.html">Beranda</a></li>
-          <li><a href="acara.html">Acara</a></li>
+          <li><a href="../index.php">Beranda</a></li>
+          <li><a href="../acara.php">Acara</a></li>
           <li><a href="tentangkami.html">Tentang Kami</a></li>
         </ul>
       </div>
@@ -202,7 +201,7 @@
     if (user) {
       document.getElementById("user-name").textContent = user.name || "Nama pengguna";
       document.getElementById("user-email").textContent = user.email || "Email pengguna";
-      document.getElementById("user-photo").src = user.photo || "assets/Frame 79.png";
+      document.getElementById("user-photo").src = user.photo || "../assets/foto profile.png";
       document.getElementById("fullname").value = user.fullname || "";
       document.getElementById("username").value = user.name || "";
       document.getElementById("email").value = user.email || "";
@@ -220,7 +219,7 @@
         email: document.getElementById("email").value,
         phone: document.getElementById("phone").value,
         password: document.getElementById("password").value,
-        photo: user?.photo || "assets/Frame 79.png"
+        photo: user?.photo || "../assets/foto profile.png"
       };
       localStorage.setItem("user", JSON.stringify(updatedUser));
       alert("Profil berhasil diperbarui!");

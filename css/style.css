@@ -584,7 +584,7 @@ body.fade-out {
 
 /* background gambar kamu */
 .about-hero .hero-bg {
-  background: url('assets/kisahku.jpg') center/cover no-repeat; 
+  background: url('../assets/kisahku.jpg') center/cover no-repeat; 
   position: absolute;
   top: 0; left: 0;
   width: 100%;
@@ -672,7 +672,6 @@ body.fade-out {
   max-width: 550px;
 }
 
-/* OPSI 1: Layout Collage Aesthetic (Kayak Referensi Gambar 1) */
 .hero-images {
   flex: 1 1 500px;
   position: relative;
@@ -693,7 +692,6 @@ body.fade-out {
   transition: all 0.4s ease;
 }
 
-/* Layout Grid yang Aesthetic */
 .hero-images .img1 { 
   grid-column: 1;
   grid-row: 1 / 3;
@@ -1183,10 +1181,9 @@ body.fade-out {
   margin: 0 15px 15px;
 }
 
-/* 🔥 Tombol tetap sejajar di bawah */
 .upcoming-card .button-group {
-  margin-top: auto; /* dorong tombol ke bagian bawah kartu */
-  padding: 0 15px 20px; /* spasi kanan-kiri dan bawah */
+  margin-top: auto;
+  padding: 0 15px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
