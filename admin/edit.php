@@ -73,10 +73,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <p style="color:red;"><?= $error; ?></p>
     <?php endif; ?>
 
-    <form method="post" class="admin-form">
+    <form method="post" enctype="multipart/form-data">
       <div>
         <label>Judul Event</label>
-        <input type="text" name="judul"
+        <input type="file" name="poster" accept="image/*">
                value="<?= htmlspecialchars($event['judul'] ?? ''); ?>" required>
       </div>
 

@@ -9,7 +9,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // ambil data dari form
     $judul         = mysqli_real_escape_string($conn, $_POST['judul']);
     $kategori      = mysqli_real_escape_string($conn, $_POST['kategori']);
-    $poster        = mysqli_real_escape_string($conn, $_POST['poster']);
+    $posterName = $_FILES['poster']['name'];
+    $posterTmp  = $_FILES['poster']['tmp_name'];
+    $posterPath = '../uploads/' . $posterName;
+    move_uploaded_file($posterTmp, $posterPath);
     $deskripsi     = mysqli_real_escape_string($conn, $_POST['deskripsi']);
     $benefit       = mysqli_real_escape_string($conn, $_POST['benefit']);
     $register_link = mysqli_real_escape_string($conn, $_POST['register_link']);
@@ -19,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sql = "INSERT INTO events
             (judul, kategori, poster, deskripsi, benefit, register_link, detail_link)
             VALUES
-            ('$judul', '$kategori', '$poster', '$deskripsi', '$benefit', '$register_link', '$detail_link')";
+            ('$judul', '$kategori', '$posterPath', '$deskripsi', '$benefit', '$register_link', '$detail_link')";
 
     if (mysqli_query($conn, $sql)) {
         header('Location: list.php'); // masih satu folder (admin/)
@@ -51,7 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <p style="color:red;"><?= $error; ?></p>
     <?php endif; ?>
 
-    <form method="post" class="admin-form">
+    <form method="POST" class="admin-form" enctype="multipart/form-data">
+
       <div>
         <label>Judul Event</label>
         <input type="text" name="judul" required>
@@ -69,8 +73,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </div>
 
       <div>
-        <label>Poster (URL / path gambar)</label>
-        <input type="text" name="poster" placeholder="contoh: assets/multimedia-action.png">
+      <label>Poster Event</label>
+      <input type="file" name="poster" required>
+
       </div>
 
       <div>
