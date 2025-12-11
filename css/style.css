@@ -1582,6 +1582,10 @@ body.auth-page {
   box-sizing: border-box;
 }
 
+.profile-header {
+  text-align: center; /* tambahkan ini */
+}
+
 .profile-header img {
   width: 160px;
   height: 160px;

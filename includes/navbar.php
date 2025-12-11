@@ -46,7 +46,7 @@ $photo = $_SESSION['photo'] ?? $basePath . 'assets/foto profile.png';
     </div>
 
     <div class="sidebar-menu">
-        <a href="<?= $basePath ?>pages/profile.php"><i class="fa-regular fa-user"></i> Profil Saya</a>
+        <a href="<?= $basePath ?>profile.php"><i class="fa-regular fa-user"></i> Profil Saya</a>
         <a href="<?= $basePath ?>pages/bookmark.html"><i class="fa-regular fa-bookmark"></i> Bookmark Saya</a>
         <a href="<?= $basePath ?>admin/list.php"><i class="fa-solid fa-calendar-days"></i> Kelola Event</a>
         <a href="#"><i class="fa-solid fa-gear"></i> Pengaturan</a>

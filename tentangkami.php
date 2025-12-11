@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../includes/db_functions.php';
+require 'includes/db_functions.php'; // path sudah fix
 
 // Ambil info user dari session
 $user = null;
@@ -9,7 +9,7 @@ if(isset($_SESSION['id_user'])){
         'id_user' => $_SESSION['id_user'],
         'nama_pengguna' => $_SESSION['nama_pengguna'],
         'email' => $_SESSION['email'],
-        'photo' => $_SESSION['photo'] ?? '../assets/foto profile.png'
+        'photo' => $_SESSION['photo'] ?? 'assets/foto profile.png'
     ];
 }
 ?>
@@ -19,26 +19,26 @@ if(isset($_SESSION['id_user'])){
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tentang Kami | UPNext</title>
-  <link rel="stylesheet" href="../css/style.css" />
-  <link rel="icon" type="image/png" href="../assets/logo.png" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <script src="../script.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
 
   <!-- ==== NAVBAR ==== -->
   <nav class="navbar">
     <div class="navbar-left">
-      <img src="../assets/logo.png" alt="UPNext Logo" class="logo" />
+      <img src="assets/logo.png" alt="UPNext Logo" class="logo" />
       <h1 class="brand">
         <span class="upn">UPN</span><span class="ext">ext</span>
       </h1>
     </div>
 
     <ul class="nav-links" id="navLinks">
-      <li><a href="../index.php">Beranda</a></li>
-      <li><a href="../acara.php">Acara</a></li>
+      <li><a href="index.php">Beranda</a></li>
+      <li><a href="acara.php">Acara</a></li>
       <li><a href="tentangkami.php">Tentang Kami</a></li>
 
       <?php if($user): ?>
@@ -46,7 +46,7 @@ if(isset($_SESSION['id_user'])){
           <img src="<?= $user['photo'] ?>" alt="Foto Profil" class="navbar-profile">
         </li>
       <?php else: ?>
-        <li><button class="btn-masuk" onclick="window.location.href='login.php'">Masuk</button></li>
+        <li><button class="btn-masuk" onclick="window.location.href='pages/login.html'">Masuk</button></li>
       <?php endif; ?>
     </ul>
 
@@ -67,7 +67,7 @@ if(isset($_SESSION['id_user'])){
     <div class="sidebar-menu">
       <a href="profile.php"><i class="fa-regular fa-user"></i> Profil Saya</a>
       <a href="bookmark.php"><i class="fa-regular fa-bookmark"></i> Bookmark Saya</a>
-      <a href="../admin/list.php"><i class="fa-solid fa-calendar-days"></i> Kelola Event</a>
+      <a href="admin/list.php"><i class="fa-solid fa-calendar-days"></i> Kelola Event</a>
       <a href="#"><i class="fa-solid fa-gear"></i> Pengaturan</a>
       <a href="logout.php" class="logout" id="logoutBtn">
         <i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar
@@ -99,9 +99,9 @@ if(isset($_SESSION['id_user'])){
         </p>
       </div>
       <div class="hero-images">
-        <img src="../assets/kisahku.jpg" alt="Kegiatan Kampus" class="img1" />
-        <img src="../assets/pemira.jpg" alt="Diskusi Mahasiswa" class="img2" />
-        <img src="../assets/comvis.jpg" alt="Workshop Digital" class="img3" />
+        <img src="assets/kisahku.jpg" alt="Kegiatan Kampus" class="img1" />
+        <img src="assets/pemira.jpg" alt="Diskusi Mahasiswa" class="img2" />
+        <img src="assets/comvis.jpg" alt="Workshop Digital" class="img3" />
       </div>
     </section>
 
@@ -134,7 +134,7 @@ if(isset($_SESSION['id_user'])){
     <!-- VISI & MISI -->
     <section class="visi-misi">
       <div class="visi box">
-        <img src="../assets/visi.jpg" alt="Visi Kegiatan" />
+        <img src="assets/visi.jpg" alt="Visi Kegiatan" />
         <h2>VISI</h2>
         <p>
           Menjadi pusat kegiatan digital kampus yang menghubungkan mahasiswa,
@@ -143,7 +143,7 @@ if(isset($_SESSION['id_user'])){
         </p>
       </div>
       <div class="misi box">
-        <img src="../assets/misi.jpg" alt="Misi Kegiatan" />
+        <img src="assets/misi.jpg" alt="Misi Kegiatan" />
         <h2>MISI</h2>
         <ul>
           <li>Mempermudah akses informasi kegiatan kampus.</li>
@@ -168,22 +168,22 @@ if(isset($_SESSION['id_user'])){
       <p class="tim-desc">Kenalan sama orang-orang hebat di balik acara seru kami!</p>
       <div class="tim-grid">
         <div class="tim-card">
-          <img src="../assets/nanaw.png" alt="Anggota 1" />
+          <img src="assets/nanaw.png" alt="Anggota 1" />
           <h3>Nawra Nashiramitha Fawza</h3>
           <p>2410512170</p>
         </div>
         <div class="tim-card">
-          <img src="../assets/raisoy.png" alt="Anggota 2" />
+          <img src="assets/raisoy.png" alt="Anggota 2" />
           <h3>Raisa Nasifa Gustian</h3>
           <p>2410512190</p>
         </div>
         <div class="tim-card">
-          <img src="../assets/kyul.png" alt="Anggota 3" />
+          <img src="assets/kyul.png" alt="Anggota 3" />
           <h3>Saskia Rahma Putri</h3>
           <p>2410512193</p>
         </div>
         <div class="tim-card">
-          <img src="../assets/princes.png" alt="Anggota 4" />
+          <img src="assets/princes.png" alt="Anggota 4" />
           <h3>Meidiana Maulidya</h3>
           <p>2410512195</p>
         </div>
@@ -197,7 +197,7 @@ if(isset($_SESSION['id_user'])){
     <div class="footer-top">
       <div class="footer-brand">
         <div class="footer-logo">
-          <img src="../assets/logo.png" alt="UPNext Logo">
+          <img src="assets/logo.png" alt="UPNext Logo">
           <h2><span class="upn">UPN</span><span class="ext">ext</span></h2>
         </div>
         <p class="footer-desc">
@@ -213,8 +213,8 @@ if(isset($_SESSION['id_user'])){
       <div class="footer-menu">
         <h3>Menu</h3>
         <ul>
-          <li><a href="../index.php">Beranda</a></li>
-          <li><a href="../acara.php">Acara</a></li>
+          <li><a href="index.php">Beranda</a></li>
+          <li><a href="acara.php">Acara</a></li>
           <li><a href="tentangkami.php">Tentang Kami</a></li>
         </ul>
       </div>

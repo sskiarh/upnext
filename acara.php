@@ -55,7 +55,7 @@ foreach ($rows as $row) {
     <ul class="nav-links" id="navLinks">
         <li><a href="index.php">Beranda</a></li>
         <li><a href="acara.php">Acara</a></li>
-        <li><a href="pages/tentangkami.php">Tentang Kami</a></li>
+        <li><a href="tentangkami.php">Tentang Kami</a></li>
 
         <?php if($user): ?>
             <li>
@@ -81,8 +81,8 @@ foreach ($rows as $row) {
     </div>
 
     <div class="sidebar-menu">
-        <a href="pages/profile.php"><i class="fa-regular fa-user"></i> Profil Saya</a>
-        <a href="pages/bookmark.php"><i class="fa-regular fa-bookmark"></i> Bookmark Saya</a>
+        <a href="profile.php"><i class="fa-regular fa-user"></i> Profil Saya</a>
+        <a href="pages/bookmark.html"><i class="fa-regular fa-bookmark"></i> Bookmark Saya</a>
         <a href="admin/list.php"><i class="fa-solid fa-calendar-days"></i> Kelola Event</a>
         <a href="#"><i class="fa-solid fa-gear"></i> Pengaturan</a>
         <a href="logout.php" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar</a>
@@ -135,7 +135,7 @@ foreach ($rows as $row) {
             <ul>
                 <li><a href="index.php">Beranda</a></li>
                 <li><a href="acara.php">Acara</a></li>
-                <li><a href="pages/tentangkami.html">Tentang Kami</a></li>
+                <li><a href="tentangkami.html">Tentang Kami</a></li>
             </ul>
         </div>
 

@@ -58,7 +58,7 @@ if(isset($_SESSION['id_user'])){
     <ul class="nav-links" id="navLinks">
         <li><a href="index.php">Beranda</a></li>
         <li><a href="acara.php">Acara</a></li>
-        <li><a href="pages/tentangkami.php">Tentang Kami</a></li>
+        <li><a href="tentangkami.php">Tentang Kami</a></li>
         <?php if($user): ?>
             <li>
                 <img src="<?= $user['photo'] ?>" alt="Foto Profil" class="navbar-profile" id="navProfile">
@@ -84,7 +84,7 @@ if(isset($_SESSION['id_user'])){
     </div>
 
     <div class="sidebar-menu">
-        <a href="pages/profile.php"><i class="fa-regular fa-user"></i> Profil Saya</a>
+        <a href="profile.php"><i class="fa-regular fa-user"></i> Profil Saya</a>
         <a href="pages/bookmark.html"><i class="fa-regular fa-bookmark"></i> Bookmark Saya</a>
         <a href="admin/list.php"><i class="fa-solid fa-calendar-days"></i> Kelola Event</a>
         <a href="#"><i class="fa-solid fa-gear"></i> Pengaturan</a>
