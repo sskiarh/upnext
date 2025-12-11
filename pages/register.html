@@ -51,6 +51,8 @@
   </div>
 
   <script>
+    const BASE_PATH = "/UPNext";
+
     function goToHome(e) {
       e.preventDefault();
       const name = document.getElementById("name").value;
@@ -64,7 +66,8 @@
 
       localStorage.setItem("user", JSON.stringify(user));
       localStorage.setItem("isLoggedIn", "true");
-      window.location.href = "../index.php";
+
+      window.location.href = `${BASE_PATH}/index.php`;
     }
 
     // Toggle mata password
