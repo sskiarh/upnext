@@ -34,32 +34,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $detail_link   = mysqli_real_escape_string($conn, $_POST['detail_link'] ?? '');
 
         // ===== UPLOAD POSTER BARU (optional) =====
-    $posterFinal = $event['poster']; // default: pakai poster lama
+        
+   $posterFinal = $event['poster']; // default poster lama
 
-    if (!empty($_FILES['poster']['name'])) {
+if (!empty($_FILES['poster']['name'])) {
+    $namaFile = time() . '_' . $_FILES['poster']['name'];
+    $tmpPath  = $_FILES['poster']['tmp_name'];
 
-        $namaFile = time() . '_' . $_FILES['poster']['name'];
-        $tmpPath  = $_FILES['poster']['tmp_name'];
-        $targetDir = "../assets/uploads/";
-        $targetFile = $targetDir . $namaFile;
+    $posterFinal = 'uploads/' . $namaFile; 
+    $serverPath  = '../uploads/' . $namaFile;
 
-        // Pastikan folder ada
-        if (!is_dir($targetDir)) {
-            mkdir($targetDir, 0777, true);
-        }
+    move_uploaded_file($tmpPath, $serverPath);
+}
 
-        // Upload file
-        if (move_uploaded_file($tmpPath, $targetFile)) {
-            $posterFinal = "assets/uploads/" . $namaFile; // path disimpan ke DB
-        } else {
-            $error = "Gagal upload poster.";
-        }
-    }
-    
+
     $sql = "UPDATE events SET
                 judul         = '$judul',
                 kategori      = '$kategori',
-                poster        = '$poster',
+                poster        = '$posterFinal',
                 deskripsi     = '$deskripsi',
                 benefit       = '$benefit',
                 register_link = '$register_link',

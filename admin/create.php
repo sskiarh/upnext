@@ -9,10 +9,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // ambil data dari form
     $judul         = mysqli_real_escape_string($conn, $_POST['judul']);
     $kategori      = mysqli_real_escape_string($conn, $_POST['kategori']);
-    $posterName = $_FILES['poster']['name'];
+     // FILE UPLOAD
+    $posterName = time() . '_' . $_FILES['poster']['name'];
     $posterTmp  = $_FILES['poster']['tmp_name'];
-    $posterPath = '../uploads/' . $posterName;
-    move_uploaded_file($posterTmp, $posterPath);
+
+    // path untuk database (tanpa ../)
+    $posterPath = 'uploads/' . $posterName;
+
+    // path di server (dengan ../ untuk menuju folder uploads)
+    $serverPath = '../uploads/' . $posterName;
+
+    move_uploaded_file($posterTmp, $serverPath);
 
     $deskripsi     = mysqli_real_escape_string($conn, $_POST['deskripsi']);
     $benefit       = mysqli_real_escape_string($conn, $_POST['benefit']);
