@@ -1,3 +1,18 @@
+<?php
+session_start();
+require '../includes/db_functions.php';
+
+// Ambil info user dari session
+$user = null;
+if(isset($_SESSION['id_user'])){
+    $user = [
+        'id_user' => $_SESSION['id_user'],
+        'nama_pengguna' => $_SESSION['nama_pengguna'],
+        'email' => $_SESSION['email'],
+        'photo' => $_SESSION['photo'] ?? '../assets/foto profile.png'
+    ];
+}
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -24,10 +39,16 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="../index.php">Beranda</a></li>
       <li><a href="../acara.php">Acara</a></li>
-      <li><a href="tentangkami.html">Tentang Kami</a></li>
-    </ul>
+      <li><a href="tentangkami.php">Tentang Kami</a></li>
 
-    <button class="btn-masuk" onclick="window.location.href='login.html'">Masuk</button>
+      <?php if($user): ?>
+        <li>
+          <img src="<?= $user['photo'] ?>" alt="Foto Profil" class="navbar-profile">
+        </li>
+      <?php else: ?>
+        <li><button class="btn-masuk" onclick="window.location.href='login.php'">Masuk</button></li>
+      <?php endif; ?>
+    </ul>
 
     <div class="hamburger" id="hamburger">
       <i class="fa-solid fa-bars"></i>
@@ -35,35 +56,34 @@
   </nav>
 
   <!-- ==== SIDEBAR PROFIL ==== -->
+  <?php if($user): ?>
   <div class="sidebar" id="sidebar">
     <div class="sidebar-header">
-      <img src="../assets/Frame 79.png" alt="Foto Profil" id="sidebar-photo">
-      <h3 id="sidebar-name">Nama pengguna</h3>
-      <p id="sidebar-email">Email pengguna</p>
+      <img src="<?= $user['photo'] ?>" alt="Foto Profil" id="sidebar-photo">
+      <h3 id="sidebar-name"><?= $user['nama_pengguna'] ?></h3>
+      <p id="sidebar-email"><?= $user['email'] ?></p>
     </div>
 
     <div class="sidebar-menu">
-      <a href="profile.html"><i class="fa-regular fa-user"></i> Profil Saya</a>
-      <a href="bookmark.html"><i class="fa-regular fa-bookmark"></i> Bookmark Saya</a>
+      <a href="profile.php"><i class="fa-regular fa-user"></i> Profil Saya</a>
+      <a href="bookmark.php"><i class="fa-regular fa-bookmark"></i> Bookmark Saya</a>
       <a href="../admin/list.php"><i class="fa-solid fa-calendar-days"></i> Kelola Event</a>
       <a href="#"><i class="fa-solid fa-gear"></i> Pengaturan</a>
-      <a href="#" class="logout" id="logoutBtn">
+      <a href="logout.php" class="logout" id="logoutBtn">
         <i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar
       </a>
     </div>
   </div>
-
-  <!-- Overlay (latar gelap waktu sidebar buka) -->
   <div class="overlay" id="overlay"></div>
+  <?php endif; ?>
 
-  <!-- ==== TENTANG KAMI ==== -->
+  <!-- ==== HALAMAN TENTANG KAMI ==== -->
   <main class="tentang-kami">
 
     <!-- HERO SECTION -->
     <section class="about-hero">
       <div class="hero-bg" aria-hidden="true"></div>
       <div class="hero-overlay"></div>
-
       <div class="hero-inner">
         <h1 class="hero-title">#IniCeritaKami</h1>
       </div>
@@ -195,7 +215,7 @@
         <ul>
           <li><a href="../index.php">Beranda</a></li>
           <li><a href="../acara.php">Acara</a></li>
-          <li><a href="tentangkami.html">Tentang Kami</a></li>
+          <li><a href="tentangkami.php">Tentang Kami</a></li>
         </ul>
       </div>
 

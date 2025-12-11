@@ -11,63 +11,56 @@
 </head>
 <body class="auth-page">
 
-  <div class="auth-logo">
-    <img src="../assets/logo.png" alt="UPNext Logo" />
-    <h2><span class="up">UP</span><span class="next">Next</span></h2>
-  </div>
+<div class="auth-logo">
+  <img src="../assets/logo.png" alt="UPNext Logo" />
+  <h2><span class="up">UP</span><span class="next">Next</span></h2>
+</div>
 
-  <div class="auth-box">
-    <h3>Selamat Datang Kembali!</h3>
+<div class="auth-box">
+  <h3>Selamat Datang Kembali!</h3>
 
-    <form onsubmit="goToHome(event)">
-      <label>Nama pengguna</label>
-      <div class="input-group">
-        <i class="fa-regular fa-user"></i>
-        <input type="text" id="name" placeholder="Masukkan nama pengguna" required>
-      </div>
+  <!-- Error message -->
+  <div id="error-msg" style="color:red; text-align:center; margin-bottom:10px;"></div>
 
-      <label>Kata sandi</label>
-      <div class="input-group">
-        <i class="fa-solid fa-lock"></i>
-        <input type="password" id="password" placeholder="Masukkan kata sandi" required>
-        <i class="fa-regular fa-eye" id="togglePassword"></i>
-      </div>
+  <form action="../login.php" method="POST">
+    <label>Nama Pengguna</label>
+    <div class="input-group">
+      <i class="fa-regular fa-user"></i>
+      <input type="text" name="nama_pengguna" placeholder="Masukkan nama pengguna" required>
+    </div>
 
-      <div class="login-options">
-        <label><input type="checkbox"> Ingat saya</label>
-        <a href="#" class="forgot">Lupa kata sandi?</a>
-      </div>
+    <label>Kata Sandi</label>
+    <div class="input-group">
+      <i class="fa-solid fa-lock"></i>
+      <input type="password" name="kata_sandi" placeholder="Masukkan kata sandi" required>
+      <i class="fa-regular fa-eye" id="togglePassword"></i>
+    </div>
 
-      <button type="submit" class="btn-main">Masuk</button>
-      <p class="switch">Belum punya akun? <a href="register.html">Buat akun</a></p>
-    </form>
-  </div>
+    <div class="login-options">
+      <label><input type="checkbox" name="ingat_saya"> Ingat saya</label>
+    </div>
 
-  <script>
-    function goToHome() {
-      e.preventDefault();
-      const name = document.getElementById("name").value;
-      const user = {
-        name: name,
-        email: `${name}@upnvj.ac.id`,
-        photo: "/UPNext/assets/foto profile.png"
-      };
+    <button type="submit" class="btn-main">Masuk</button>
+    <p class="switch">Belum punya akun? <a href="register.html">Buat akun</a></p>
+  </form>
+</div>
 
-      localStorage.setItem("user", JSON.stringify(user));
-      localStorage.setItem("isLoggedIn", "true");
+<script>
+  // Toggle mata password
+  const toggle = document.getElementById("togglePassword");
+  const password = document.querySelector('input[name="kata_sandi"]');
+  toggle.addEventListener("click", () => {
+    const type = password.type === "password" ? "text" : "password";
+    password.type = type;
+    toggle.classList.toggle("fa-eye-slash");
+  });
 
-      window.location.href = "../index.php";
-    }
-
-    // Toggle mata password
-    const toggle = document.getElementById("togglePassword");
-    const password = document.getElementById("password");
-    toggle.addEventListener("click", () => {
-      const type = password.type === "password" ? "text" : "password";
-      password.type = type;
-      toggle.classList.toggle("fa-eye-slash");
-    });
-  </script>
-
+  // Ambil error dari query string
+  const params = new URLSearchParams(window.location.search);
+  const error = params.get('error');
+  if(error){
+    document.getElementById('error-msg').innerText = error;
+  }
+</script>
 </body>
 </html>

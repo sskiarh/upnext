@@ -11,74 +11,65 @@
 </head>
 <body class="auth-page">
 
-  <div class="auth-logo">
-    <img src="../assets/logo.png" alt="UPNext Logo" />
-    <h2><span class="up">UP</span><span class="next">Next</span></h2>
-  </div>
+<div class="auth-logo">
+  <img src="../assets/logo.png" alt="UPNext Logo" />
+  <h2><span class="up">UP</span><span class="next">Next</span></h2>
+</div>
 
-  <div class="auth-box">
-    <h3>Daftar untuk Mulai!</h3>
+<div class="auth-box">
+  <h3>Daftar untuk Mulai!</h3>
 
-    <form onsubmit="goToHome(event)">
-      <label>Nama pengguna</label>
-      <div class="input-group">
-        <i class="fa-regular fa-user"></i>
-        <input type="text" id="name" placeholder="Masukkan nama pengguna" required>
-      </div>
+  <!-- Error message -->
+  <div id="error-msg" style="color:red; text-align:center; margin-bottom:10px;"></div>
 
-      <label>Email</label>
-      <div class="input-group">
-        <i class="fa-regular fa-envelope"></i>
-        <input type="email" id="email" placeholder="Masukkan email" required>
-      </div>
+  <form action="../register.php" method="POST">
+    <label>Nama Pengguna</label>
+    <div class="input-group">
+      <i class="fa-regular fa-user"></i>
+      <input type="text" name="nama_pengguna" placeholder="Masukkan nama pengguna" required>
+    </div>
 
-      <label>Kata sandi</label>
-      <div class="input-group">
-        <i class="fa-solid fa-lock"></i>
-        <input type="password" id="password" placeholder="Masukkan kata sandi" required>
-        <i class="fa-regular fa-eye" id="togglePassword"></i>
-      </div>
+    <label>Email</label>
+    <div class="input-group">
+      <i class="fa-regular fa-envelope"></i>
+      <input type="email" name="email" placeholder="Masukkan email" required>
+    </div>
 
-      <label>Konfirmasi kata sandi</label>
-      <div class="input-group">
-        <i class="fa-solid fa-lock"></i>
-        <input type="password" placeholder="Masukkan ulang kata sandi" required>
-      </div>
+    <label>Kata Sandi</label>
+    <div class="input-group">
+      <i class="fa-solid fa-lock"></i>
+      <input type="password" name="kata_sandi" placeholder="Masukkan kata sandi" required id="password">
+      <i class="fa-regular fa-eye" id="togglePassword"></i>
+    </div>
 
-      <button type="submit" class="btn-main">Buat akun</button>
-      <p class="switch">Sudah punya akun? <a href="login.html">Masuk</a></p>
-    </form>
-  </div>
+    <label>Konfirmasi Kata Sandi</label>
+    <div class="input-group">
+      <i class="fa-solid fa-lock"></i>
+      <input type="password" name="konfirmasi_kata_sandi" placeholder="Masukkan ulang kata sandi" required>
+    </div>
 
-  <script>
-    const BASE_PATH = "/UPNext";
+    <button type="submit" class="btn-main">Buat akun</button>
+    <p class="switch">Sudah punya akun? <a href="login.html">Masuk</a></p>
+  </form>
+</div>
 
-    function goToHome(e) {
-      e.preventDefault();
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
+<script>
+  // Toggle mata password
+  const toggle = document.getElementById("togglePassword");
+  const password = document.getElementById("password");
+  toggle.addEventListener("click", () => {
+    const type = password.type === "password" ? "text" : "password";
+    password.type = type;
+    toggle.classList.toggle("fa-eye-slash");
+  });
 
-      const user = {
-        name: name,
-        email: email,
-        photo: "/UPNext/assets/foto profile.png"
-      };
-
-      localStorage.setItem("user", JSON.stringify(user));
-      localStorage.setItem("isLoggedIn", "true");
-
-      window.location.href = `${BASE_PATH}/index.php`;
-    }
-
-    // Toggle mata password
-    const toggle = document.getElementById("togglePassword");
-    const password = document.getElementById("password");
-    toggle.addEventListener("click", () => {
-      const type = password.type === "password" ? "text" : "password";
-      password.type = type;
-      toggle.classList.toggle("fa-eye-slash");
-    });
-  </script>
+  // Ambil error dari query string
+  const params = new URLSearchParams(window.location.search);
+  const error = params.get('error');
+  if(error){
+    document.getElementById('error-msg').innerText = error;
+  }
+</script>
 
 </body>
 </html>

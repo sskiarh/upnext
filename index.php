@@ -1,187 +1,175 @@
 <?php
+session_start(); // Mulai session
 require 'includes/db_functions.php';
 
+// Ambil data events
 $rows = query("SELECT * FROM events ORDER BY created_at DESC");
-
 $eventsForJs = [];
 foreach ($rows as $row) {
-  $eventsForJs[] = [
-    'title'       => $row['judul'],
-    'category'    => $row['kategori'],
-    'poster'      => $row['poster'],
-    'desc'        => $row['deskripsi'],
-    'benefit'     => $row['benefit'],
-    'registerLink'=> $row['register_link'],
-    'detailLink'  => $row['detail_link'],
-  ];
+    $eventsForJs[] = [
+        'title' => $row['judul'],
+        'category' => $row['kategori'],
+        'poster' => $row['poster'],
+        'desc' => $row['deskripsi'],
+        'benefit' => $row['benefit'],
+        'registerLink' => $row['register_link'],
+        'detailLink' => $row['detail_link'],
+    ];
+}
+
+// Ambil info user jika sudah login
+$user = null;
+if(isset($_SESSION['id_user'])){
+    $user = [
+        'id_user' => $_SESSION['id_user'],
+        'name' => $_SESSION['nama_pengguna'],
+        'email' => $_SESSION['email'],
+        'photo' => $_SESSION['photo'] ?? 'assets/foto profile.png'
+    ];
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UPNext</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" type="image/png" href="assets/logo.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>UPNext</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="icon" type="image/png" href="assets/logo.png" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<script>
     window.eventsFromDb = <?= json_encode($eventsForJs); ?>;
-  </script>
-  <script src="script.js" defer></script>
+</script>
+<script src="script.js" defer></script>
 </head>
 <body>
 
-
-  <!-- ==== NAVBAR ==== -->
-  <nav class="navbar">
+<!-- ==== NAVBAR ==== -->
+<nav class="navbar">
     <div class="navbar-left">
-      <img src="assets/logo.png" alt="UPNext Logo" class="logo" />
-      <h1 class="brand">
-        <span class="upn">UPN</span><span class="ext">ext</span>
-      </h1>
+        <img src="assets/logo.png" alt="UPNext Logo" class="logo" />
+        <h1 class="brand">
+            <span class="upn">UPN</span><span class="ext">ext</span>
+        </h1>
     </div>
 
     <ul class="nav-links" id="navLinks">
-      <li><a href="index.php">Beranda</a></li>
-      <li><a href="acara.php">Acara</a></li>
-      <li><a href="pages/tentangkami.html">Tentang Kami</a></li>
-      <li><button class="btn-masuk" onclick="window.location.href='pages/login.html'">Masuk</button></li>
+        <li><a href="index.php">Beranda</a></li>
+        <li><a href="acara.php">Acara</a></li>
+        <li><a href="pages/tentangkami.php">Tentang Kami</a></li>
+        <?php if($user): ?>
+            <li>
+                <img src="<?= $user['photo'] ?>" alt="Foto Profil" class="navbar-profile" id="navProfile">
+            </li>
+        <?php else: ?>
+            <li><button class="btn-masuk" onclick="window.location.href='pages/login.html'">Masuk</button></li>
+        <?php endif; ?>
     </ul>
 
     <!-- Hamburger -->
-  <div class="hamburger" id="hamburger">
-    <i class="fa-solid fa-bars"></i>
-  </div>
-  </nav>
+    <div class="hamburger" id="hamburger">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+</nav>
 
 <!-- ==== SIDEBAR PROFIL ==== -->
+<?php if($user): ?>
 <div class="sidebar" id="sidebar">
-  <div class="sidebar-header">
-    <img src="assets/foto profile.png" alt="Foto Profil" id="sidebar-photo">
-    <h3 id="sidebar-name">Nama pengguna</h3>
-    <p id="sidebar-email">Email pengguna</p>
-  </div>
+    <div class="sidebar-header">
+        <img src="<?= $user['photo'] ?>" alt="Foto Profil" id="sidebar-photo">
+        <h3 id="sidebar-name"><?= $user['name'] ?></h3>
+        <p id="sidebar-email"><?= $user['email'] ?></p>
+    </div>
 
-  <div class="sidebar-menu">
-    <a href="pages/profile.html"><i class="fa-regular fa-user"></i> Profil Saya</a>
-    <a href="pages/bookmark.html"><i class="fa-regular fa-bookmark"></i> Bookmark Saya</a>
-    <a href="list.php"><i class="fa-solid fa-calendar-days"></i> Kelola Event</a>
-    <a href="#"><i class="fa-solid fa-gear"></i> Pengaturan</a>
-    <a href="#" class="logout" id="logoutBtn">
-      <i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar
-    </a>
-  </div>
+    <div class="sidebar-menu">
+        <a href="pages/profile.php"><i class="fa-regular fa-user"></i> Profil Saya</a>
+        <a href="pages/bookmark.html"><i class="fa-regular fa-bookmark"></i> Bookmark Saya</a>
+        <a href="admin/list.php"><i class="fa-solid fa-calendar-days"></i> Kelola Event</a>
+        <a href="#"><i class="fa-solid fa-gear"></i> Pengaturan</a>
+        <a href="logout.php" class="logout">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar
+        </a>
+    </div>
 </div>
-
-<!-- Overlay (latar gelap waktu sidebar buka) -->
 <div class="overlay" id="overlay"></div>
-
+<?php endif; ?>
 
 <!-- ==== HERO SECTION ==== -->
 <section class="hero">
-  <div class="hero-content">
-    <h1>Your <span class="melodrame">future</span> Begins Here</h1>
-    <p>
-      UPNext adalah platform informasi kegiatan kampus yang membantu mahasiswa UPN Veteran Jakarta
-      untuk berkembang melalui seminar, workshop, dan lomba inspiratif.
-    </p>
-  </div>
-<div class="hero-images">
-  <div class="img-card card1">
-    <img src="assets/hero1.jpeg" alt="Belajar langsung dari praktik, bukan sekadar teori">
-    <div class="caption">Belajar langsung dari praktik, bukan sekadar teori</div>
-  </div>
-  <div class="img-card card2">
-    <img src="assets/hero2.jpeg" alt="Perluas wawasanmu bersama para inspirator terbaik.">
-    <div class="caption">Perluas wawasanmu bersama para inspirator terbaik.</div>
-  </div>
-  <div class="img-card card3">
-    <img src="assets/hero3.jpeg" alt="Tunjukkan potensimu dan raih prestasi tertinggi!">
-    <div class="caption">Tunjukkan potensimu dan raih prestasi tertinggi!</div>
-  </div>
-</div>
+    <div class="hero-content">
+        <h1>Your <span class="melodrame">future</span> Begins Here</h1>
+        <p>
+            UPNext adalah platform informasi kegiatan kampus yang membantu mahasiswa UPN Veteran Jakarta
+            untuk berkembang melalui seminar, workshop, dan lomba inspiratif.
+        </p>
+    </div>
+    <div class="hero-images">
+        <div class="img-card card1">
+            <img src="assets/hero1.jpeg" alt="Belajar langsung dari praktik, bukan sekadar teori">
+            <div class="caption">Belajar langsung dari praktik, bukan sekadar teori</div>
+        </div>
+        <div class="img-card card2">
+            <img src="assets/hero2.jpeg" alt="Perluas wawasanmu bersama para inspirator terbaik.">
+            <div class="caption">Perluas wawasanmu bersama para inspirator terbaik.</div>
+        </div>
+        <div class="img-card card3">
+            <img src="assets/hero3.jpeg" alt="Tunjukkan potensimu dan raih prestasi tertinggi!">
+            <div class="caption">Tunjukkan potensimu dan raih prestasi tertinggi!</div>
+        </div>
+    </div>
 </section>
 
 <!-- ==== UPCOMING EVENT ==== -->
 <section class="upcoming">
-  <h2>Upcoming Event</h2>
-  <div id="upcomingList" class="upcoming-list"></div>
+    <h2>Upcoming Event</h2>
+    <div id="upcomingList" class="upcoming-list"></div>
 </section>
 
-<!-- ==== PERBANDINGAN SEMINAR VS WORKSHOP ==== -->
-<section class="comparison">
-  <h2>Apa sih bedanya <span class="italic">Seminar</span> dan <span class="italic">Workshop</span>?</h2>
-  <div class="compare-box">
-    <div class="compare-item">
-      <img src="assets/seminar.jpeg" alt="Seminar">
-      <h3>Seminar</h3>
-      <p>
-        Kegiatan yang berfokus pada penyampaian materi atau pengetahuan dari narasumber kepada peserta.
-        Cocok untuk memperluas wawasan baru dan insight akademis.
-      </p>
-    </div>
-
-    <div class="vs"><span>VS</span></div>
-
-    <div class="compare-item">
-      <img src="assets/workshop.jpeg" alt="Workshop">
-      <h3>Workshop</h3>
-      <p>
-        Lebih menekankan pada praktik langsung. Peserta akan melakukan kegiatan,
-        simulasi, atau proyek yang berhubungan dengan materi yang dibahas.
-      </p>
-    </div>
-  </div>
-</section>
-
-zz
-  <!-- ==== FOOTER ==== -->
-  <footer class="footer">
+<!-- ==== FOOTER ==== -->
+<footer class="footer">
     <div class="footer-top">
-      <div class="footer-brand">
-        <div class="footer-logo">
-          <img src="assets/logo.png" alt="UPNext Logo">
-          <h2><span class="upn">UPN</span><span class="ext">ext</span></h2>
+        <div class="footer-brand">
+            <div class="footer-logo">
+                <img src="assets/logo.png" alt="UPNext Logo">
+                <h2><span class="upn">UPN</span><span class="ext">ext</span></h2>
+            </div>
+            <p class="footer-desc">
+                UPNext adalah platform informasi kegiatan kampus Universitas Pembangunan Nasional “Veteran” Jakarta (UPNVJ)
+                yang memudahkan mahasiswa untuk menemukan, mengikuti, dan memantau berbagai event seperti seminar, workshop, dan lomba.
+            </p>
+            <div class="footer-email">
+                <i class="fa-solid fa-envelope icon-email"></i>
+                <span>upnext@upnvj.ac.id</span>
+            </div>
         </div>
-        <p class="footer-desc">
-          UPNext adalah platform informasi kegiatan kampus Universitas Pembangunan Nasional “Veteran” Jakarta (UPNVJ)
-          yang memudahkan mahasiswa untuk menemukan, mengikuti, dan memantau berbagai event seperti seminar, workshop, dan lomba.
-        </p>
-        <div class="footer-email">
-          <i class="fa-solid fa-envelope icon-email"></i>
-          <span>upnext@upnvj.ac.id</span>
+
+        <div class="footer-menu">
+            <h3>Menu</h3>
+            <ul>
+                <li><a href="index.php">Beranda</a></li>
+                <li><a href="acara.php">Acara</a></li>
+                <li><a href="pages/tentangkami.html">Tentang Kami</a></li>
+            </ul>
         </div>
-      </div>
 
-      <div class="footer-menu">
-        <h3>Menu</h3>
-        <ul>
-          <li><a href="index.php">Beranda</a></li>
-          <li><a href="acara.php">Acara</a></li>
-          <li><a href="pages/tentangkami.html">Tentang Kami</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-socials">
-        <h3>Socials</h3>
-        <div class="social-icons">
-          <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://twitter.com" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-          <a href="https://tiktok.com" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-          <a href="https://github.com" target="_blank"><i class="fa-brands fa-github"></i></a>
-          <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-</div>
-
-      </div>
+        <div class="footer-socials">
+            <h3>Socials</h3>
+            <div class="social-icons">
+                <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://tiktok.com" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://github.com" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </div>
     </div>
 
     <div class="footer-bottom">
-      <p>© 2025 UPNext | Developed by Cihuy Team</p>
+        <p>© 2025 UPNext | Developed by Cihuy Team</p>
     </div>
-  </footer>
+</footer>
 
 </body>
 </html>
