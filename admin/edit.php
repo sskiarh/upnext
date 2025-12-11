@@ -33,6 +33,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $register_link = mysqli_real_escape_string($conn, $_POST['register_link'] ?? '');
     $detail_link   = mysqli_real_escape_string($conn, $_POST['detail_link'] ?? '');
 
+        // ===== UPLOAD POSTER BARU (optional) =====
+    $posterFinal = $event['poster']; // default: pakai poster lama
+
+    if (!empty($_FILES['poster']['name'])) {
+
+        $namaFile = time() . '_' . $_FILES['poster']['name'];
+        $tmpPath  = $_FILES['poster']['tmp_name'];
+        $targetDir = "../assets/uploads/";
+        $targetFile = $targetDir . $namaFile;
+
+        // Pastikan folder ada
+        if (!is_dir($targetDir)) {
+            mkdir($targetDir, 0777, true);
+        }
+
+        // Upload file
+        if (move_uploaded_file($tmpPath, $targetFile)) {
+            $posterFinal = "assets/uploads/" . $namaFile; // path disimpan ke DB
+        } else {
+            $error = "Gagal upload poster.";
+        }
+    }
+    
     $sql = "UPDATE events SET
                 judul         = '$judul',
                 kategori      = '$kategori',
@@ -89,13 +112,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <option value="sosial"   <?= ($event['kategori'] ?? '') === 'sosial'   ? 'selected' : ''; ?>>Sosial</option>
         </select>
       </div>
-
-      <div>
-        <label>Poster (URL / path gambar)</label>
-        <input type="text" name="poster"
-               value="<?= htmlspecialchars($event['poster'] ?? ''); ?>">
-      </div>
-
+        <label>Poster Baru (optional)</label>
+        <input type="file" name="poster" accept="image/*">
+        <p style="margin-top:5px;">Poster sekarang:</p>
+        <img src="../<?= $event['poster']; ?>" style="width:150px;border-radius:8px;">
       <div>
         <label>Deskripsi</label>
         <textarea name="deskripsi" required><?= htmlspecialchars($event['deskripsi'] ?? ''); ?></textarea>

@@ -13,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $posterTmp  = $_FILES['poster']['tmp_name'];
     $posterPath = '../uploads/' . $posterName;
     move_uploaded_file($posterTmp, $posterPath);
+
     $deskripsi     = mysqli_real_escape_string($conn, $_POST['deskripsi']);
     $benefit       = mysqli_real_escape_string($conn, $_POST['benefit']);
     $register_link = mysqli_real_escape_string($conn, $_POST['register_link']);
