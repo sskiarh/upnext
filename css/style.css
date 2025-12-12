@@ -1660,3 +1660,73 @@ body.auth-page {
     padding-bottom: 200px;
   }
 }
+
+/* Event Actions - Container untuk 3 tombol */
+.event-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.event-actions a {
+    flex: 1;
+    min-width: 90px;
+    text-align: center;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 13px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+/* Tombol Detail (Solid Kuning) */
+.event-actions .btn-detail {
+    background-color: #FFBC00;
+    color: white;
+    border: 2px solid #FFBC00;
+}
+
+.event-actions .btn-detail:hover {
+    background-color: #e6a900;
+    border-color: #e6a900;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 188, 0, 0.3);
+}
+
+/* Tombol Daftar (Outline Kuning) */
+.event-actions .btn-register {
+    border: 2px solid #FFBC00;
+    color: #FFBC00;
+    background-color: transparent;
+}
+
+.event-actions .btn-register:hover {
+    background-color: #FFBC00;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 188, 0, 0.3);
+}
+
+/* Tombol Download (Outline Kuning dengan Icon) */
+.event-actions .btn-download {
+    border: 2px solid #FFBC00;
+    color: #FFBC00;
+    background-color: transparent;
+}
+
+.event-actions .btn-download:hover {
+    background-color: #FFBC00;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 188, 0, 0.3);
+}
+
+.btn-download i {
+    font-size: 14px;
+}

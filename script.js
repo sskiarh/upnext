@@ -153,10 +153,13 @@ document.addEventListener("DOMContentLoaded", () => {
         <h3 class="event-title">${ev.title}</h3>
         <p class="event-desc">${ev.desc}</p>
         <p class="event-benefit">${ev.benefit || ""}</p>
-        <div class="event-buttons">
-          <a href="${ev.detailLink}" class="btn">Detail</a>
-          <a href="${ev.registerLink}" class="btn-outline">Daftar</a>
-        </div>
+        <div class="event-actions">
+    <a href="${ev.detailLink || '#'}" target="_blank" class="btn-detail">Detail</a>
+    <a href="${ev.registerLink || '#'}" target="_blank" class="btn-register">Daftar</a>
+    <a href="${BASE_PATH}/download.php?file=${encodeURIComponent(ev.poster)}" class="btn-download">
+      <i class="fa-solid fa-download"></i> Download
+    </a>
+  </div>
       `;
 
       container.appendChild(card);
