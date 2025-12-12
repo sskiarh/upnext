@@ -28,11 +28,3 @@ CREATE TABLE events (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- TABEL BOOKMARKS
-CREATE TABLE bookmarks (
-    id_bookmark INT AUTO_INCREMENT PRIMARY KEY,
-    id_user INT,
-    id_event INT,
-    FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE CASCADE,
-    FOREIGN KEY (id_event) REFERENCES events(id)
-);
