@@ -21,7 +21,7 @@ $photo = $_SESSION['photo'] ?? $basePath . 'assets/foto profile.png';
     <ul class="nav-links" id="navLinks">
         <li><a href="<?= $basePath ?>index.php">Beranda</a></li>
         <li><a href="<?= $basePath ?>acara.php">Acara</a></li>
-        <li><a href="<?= $basePath ?>pages/tentangkami.php">Tentang Kami</a></li>
+        <li><a href="<?= $basePath ?>tentangkami.php">Tentang Kami</a></li>
 
         <?php if($user): ?>
             <li>
@@ -47,9 +47,7 @@ $photo = $_SESSION['photo'] ?? $basePath . 'assets/foto profile.png';
 
     <div class="sidebar-menu">
         <a href="<?= $basePath ?>profile.php"><i class="fa-regular fa-user"></i> Profil Saya</a>
-        <a href="<?= $basePath ?>pages/bookmark.html"><i class="fa-regular fa-bookmark"></i> Bookmark Saya</a>
         <a href="<?= $basePath ?>admin/list.php"><i class="fa-solid fa-calendar-days"></i> Kelola Event</a>
-        <a href="#"><i class="fa-solid fa-gear"></i> Pengaturan</a>
         <a href="<?= $basePath ?>logout.php" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar</a>
     </div>
 </div>

@@ -66,9 +66,7 @@ if(isset($_SESSION['id_user'])){
 
     <div class="sidebar-menu">
       <a href="profile.php"><i class="fa-regular fa-user"></i> Profil Saya</a>
-      <a href="bookmark.php"><i class="fa-regular fa-bookmark"></i> Bookmark Saya</a>
       <a href="admin/list.php"><i class="fa-solid fa-calendar-days"></i> Kelola Event</a>
-      <a href="#"><i class="fa-solid fa-gear"></i> Pengaturan</a>
       <a href="logout.php" class="logout" id="logoutBtn">
         <i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar
       </a>
