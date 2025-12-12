@@ -55,18 +55,21 @@ if(isset($_SESSION['id_user'])){
         </h1>
     </div>
 
-    <ul class="nav-links" id="navLinks">
-        <li><a href="index.php">Beranda</a></li>
-        <li><a href="acara.php">Acara</a></li>
-        <li><a href="tentangkami.php">Tentang Kami</a></li>
+    <div class="navbar-right">
+        <ul class="nav-links">
+            <li><a href="index.php">Beranda</a></li>
+            <li><a href="acara.php">Acara</a></li>
+            <li><a href="tentangkami.php">Tentang Kami</a></li>
+        </ul>
+
         <?php if($user): ?>
-            <li>
-                <img src="<?= $user['photo'] ?>" alt="Foto Profil" class="navbar-profile" id="navProfile">
-            </li>
+            <img src="<?= $user['photo'] ?>" class="navbar-profile">
         <?php else: ?>
-            <li><button class="btn-masuk" onclick="window.location.href='pages/login.html'">Masuk</button></li>
+            <button class="btn-masuk" onclick="window.location.href='pages/login.html'">Masuk</button>
         <?php endif; ?>
-    </ul>
+    </div>
+</nav>
+
 
     <!-- Hamburger -->
     <div class="hamburger" id="hamburger">

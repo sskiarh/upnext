@@ -27,33 +27,36 @@ if(isset($_SESSION['id_user'])){
 </head>
 <body>
 
-  <!-- ==== NAVBAR ==== -->
-  <nav class="navbar">
+<!-- ==== NAVBAR ==== -->
+<nav class="navbar">
     <div class="navbar-left">
-      <img src="assets/logo.png" alt="UPNext Logo" class="logo" />
-      <h1 class="brand">
-        <span class="upn">UPN</span><span class="ext">ext</span>
-      </h1>
+        <img src="assets/logo.png" alt="UPNext Logo" class="logo" />
+        <h1 class="brand">
+            <span class="upn">UPN</span><span class="ext">ext</span>
+        </h1>
     </div>
 
     <ul class="nav-links" id="navLinks">
-      <li><a href="index.php">Beranda</a></li>
-      <li><a href="acara.php">Acara</a></li>
-      <li><a href="tentangkami.php">Tentang Kami</a></li>
+        <li><a href="index.php">Beranda</a></li>
+        <li><a href="acara.php">Acara</a></li>
+        <li><a href="tentangkami.php">Tentang Kami</a></li>
 
-      <?php if($user): ?>
-        <li>
-          <img src="<?= $user['photo'] ?>" alt="Foto Profil" class="navbar-profile">
-        </li>
-      <?php else: ?>
-        <li><button class="btn-masuk" onclick="window.location.href='pages/login.html'">Masuk</button></li>
-      <?php endif; ?>
+        <?php if($user): ?>
+            <li>
+                <img src="<?= $user['photo'] ?>" class="navbar-profile">
+            </li>
+        <?php else: ?>
+            <li>
+                <button class="btn-masuk" onclick="window.location.href='pages/login.html'">Masuk</button>
+            </li>
+        <?php endif; ?>
     </ul>
 
     <div class="hamburger" id="hamburger">
-      <i class="fa-solid fa-bars"></i>
+        <i class="fa-solid fa-bars"></i>
     </div>
-  </nav>
+</nav>
+
 
   <!-- ==== SIDEBAR PROFIL ==== -->
   <?php if($user): ?>

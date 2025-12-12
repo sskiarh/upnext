@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nama_pengguna = trim($_POST['nama_pengguna']);
     $kata_sandi = trim($_POST['kata_sandi']);
 
-    $user = query("SELECT * FROM users WHERE nama_pengguna = '$nama_pengguna'");
+    $user = query("SELECT * FROM users WHERE username = '$username'");
     
     if ($user && password_verify($kata_sandi, $user[0]['kata_sandi'])) {
         // Login sukses, simpan session
